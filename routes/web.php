@@ -18,5 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/backoffice', function () {
-    echo "backoffice";
+    return view('backoffice.index');
+});
+
+Route::get('/404', function(){
+    abort('404');
 });
