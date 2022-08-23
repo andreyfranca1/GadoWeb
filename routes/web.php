@@ -21,6 +21,10 @@ Route::get('/backoffice', function () {
     return view('backoffice.index');
 });
 
+Route::get('/login', function(){
+    return view('login.index');
+});
+
 Route::get('/404', function(){
     abort('404');
 });
