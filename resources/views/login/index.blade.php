@@ -1,26 +1,8 @@
 @include('components.login.head')
 
   <section class="text-lg-start">
-    <style>
-      .verdeBosta {
-        background-color: #006635
-      }
-      .rounded-t-5 {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-      }
-  
-      @media (min-width: 992px) {
-        .rounded-tr-lg-0 {
-          border-top-right-radius: 0;
-        }
-  
-        .rounded-bl-lg-5 {
-          border-bottom-left-radius: 0.5rem;
-        }
-      }
-    </style>
-    <div class="card h-100 mb-0 p-5 verdeBosta">
+   
+    <div class="card h-100 mb-0 p-5 schoolGreen">
 
       <div class="row g-0 d-flex align-items-center p-5 form-control">
         <div class="col-lg-4 d-none d-lg-flex">
@@ -59,7 +41,7 @@
               </div>
   
               <!-- Submit button -->
-              <button type="button" class="btn btn-primary btn-block mb-4">Login</button>
+              <button type="button" class="btn btn-primary btn-block mb-4 loginBtn">Login</button>
   
             </form>
                 

@@ -6,6 +6,16 @@
   border-top-right-radius: 0.5rem;
 }
 
+.loginBtn{
+  background-color: #ED3237; 
+  border: none;
+}
+
+.loginBtn:hover{
+  background-color: #8b2427;
+  border-color: #ED3237;
+}
+
 @media (min-width: 992px) {
   .rounded-tr-lg-0 {
     border-top-right-radius: 0;
