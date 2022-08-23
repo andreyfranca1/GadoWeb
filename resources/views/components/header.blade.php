@@ -4,7 +4,7 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{route('backoffice.index')}}">
                 <!-- Logo icon -->
                 <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -18,7 +18,7 @@
                 <span class="logo-text">
                      <!-- dark Logo text -->
                      <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                     <!-- Light Logo text -->    
+                     <!-- Light Logo text -->
                      <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                 </span>
             </a>

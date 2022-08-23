@@ -25,7 +25,7 @@
                 <h1 class="error-title text-danger">404</h1>
                 <h3 class="text-uppercase error-subtitle">PÁGINA NAO ENCONTRADA</h3>
                 <p class="text-muted m-t-30 m-b-30">Clique abaixo para voltar para o menu principal</p>
-                <a href="index.html" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Voltar</a> </div>
+                <a href="{{route('backoffice.index')}}" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Voltar</a> </div>
         </div>
 
     </div>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BackOfficeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/backoffice', function () {
-    return view('backoffice.index');
+Route::prefix('backoffice')->group(function (){
+    Route::get('/', [BackOfficeController::class, 'index'])->name('backoffice.index');
+    Route::get('/login', [LoginController::class, 'loginBackOffice'])->name('backoffice.login');
 });
 
 Route::get('/login', function(){
