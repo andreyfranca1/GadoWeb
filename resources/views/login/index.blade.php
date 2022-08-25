@@ -1,7 +1,7 @@
 @include('components.login.head')
 
   <section class="text-lg-start">
-   
+
     <div class="card h-100 mb-0 p-5 schoolGreen">
 
       <div class="row g-0 d-flex align-items-center p-5 form-control">
@@ -15,19 +15,20 @@
             <div class="text-center">
               <h1>Login</h1>
             </div>
-            <form>
+            <form action='{{route($action)}}' method='post'>
+                @csrf
               <!-- Email input -->
               <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example1">Email</label>
                 <input type="email" id="form2Example1" class="form-control" />
               </div>
-  
+
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <label class="" for="form2Example2">Senha</label>
                 <input type="password" id="form2Example2" class="form-control" />
               </div>
-  
+
               <!-- 2 column grid layout for inline styling -->
               <div class="row mb-4">
                 <div class="col d-flex justify-content-center">
@@ -39,12 +40,12 @@
                 </div>
 
               </div>
-  
+
               <!-- Submit button -->
               <button type="button" class="btn btn-primary btn-block mb-4 loginBtn">Login</button>
-  
+
             </form>
-                
+
             <div class="col">
               <!-- Simple link -->
               <a href="#!">Esqueceu a Senha?</a>
