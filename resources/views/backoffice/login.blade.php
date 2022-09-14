@@ -10,7 +10,7 @@
                      class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
             </div>
             <div class="col-lg-8">
-                <div class="card-body py-5 px-md-5 form-control">
+                <div class="card-body py-5 px-md-5">
                     <div class="text-center">
                         <h1>Login</h1>
                     </div>
@@ -21,11 +21,11 @@
                             <input type="email" value="{{old('email')}}" name="email" id="email" class="form-control" />
                             <span class="badge bg-danger">{{$errors->has('email') ? $errors->first('email') : ''}}</span>
                         </div>
+
                         <div class="form-outline mb-4">
                             <label class="" for="password">Senha</label>
                             <input type="password" name="password" id="password" class="form-control" />
                             <span class="badge bg-danger">{{$errors->has('password') ? $errors->first('password') : ''}}</span>
-
                         </div>
                         <div class="row mb-4">
 {{--                            <div class="col d-flex justify-content-center">--}}
@@ -35,7 +35,7 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block mb-4 loginBtn">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block mb-4 loginBtn">Entrar</button>
                     </form>
 {{--                    <div class="col">--}}
 {{--                        <a href="#!">Esqueceu a Senha?</a>--}}
