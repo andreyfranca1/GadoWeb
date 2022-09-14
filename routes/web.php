@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::prefix('backoffice')->group(function (){
     Route::get('/', [BackOfficeController::class, 'index'])->name('backoffice.index');
     Route::get('/login', [LoginController::class, 'loginBackOffice'])->name('backoffice.login');
+    Route::post('/login', [LoginController::class, 'authBackOffice'])->name('backoffice.login');
 });
 
 Route::get('/login', function(){
