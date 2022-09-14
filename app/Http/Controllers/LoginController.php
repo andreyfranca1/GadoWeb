@@ -8,6 +8,11 @@ class LoginController extends Controller
 {
     public function loginBackOffice()
     {
-        return view('login.index');
+        return view('login.index', ['action' => 'backoffice.login']);
+    }
+
+    public function authLoginBackOffice()
+    {
+
     }
 }
