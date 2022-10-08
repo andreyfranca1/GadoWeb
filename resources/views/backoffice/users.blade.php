@@ -24,12 +24,13 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Lista de Usuários</h4>
+                        <h6 class="text-muted">{{$count}} Usuarios Cadastrados</h6>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="{{route('backoffice.index')}}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Usuários</li>
                                 </ol>
                             </nav>
                         </div>
@@ -43,7 +44,30 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Data de Criação</th>
+                                </tr>
+                                </thead>
+                                @foreach($users as $user)
+                                    <tr>
+                                        <th>{{$user['id']}}</th>
+                                        <th>{{$user['name']}}</th>
+                                        <th>{{$user['email']}}</th>
+                                        <th>{{date('d/m/Y h:i',strtotime($user['created_at']))}}</th>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
