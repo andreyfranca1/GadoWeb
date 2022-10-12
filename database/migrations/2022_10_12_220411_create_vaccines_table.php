@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('cities', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_state');
-            $table->foreign('id_state')->references('id')->on('state');
+        Schema::create('vaccines', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('company_id')->constrained('companies');
+            $table->string('name', 100);
+            $table->mediumText('description');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_foreign_key');
+        Schema::dropIfExists('vaccines');
     }
 };

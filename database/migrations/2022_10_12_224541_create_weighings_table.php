@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('weighings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('cpf', 20);
-            $table->string('phone', 20);
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignId('cattle_id')->constrained();
+            $table->boolean('first');
+            $table->double('weight');
+            $table->mediumText('description');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('weighings');
     }
 };

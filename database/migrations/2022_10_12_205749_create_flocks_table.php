@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('state', function (Blueprint $table) {
+        Schema::create('flocks', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
+            $table->foreignId('company_id')->constrained('companies');
+            $table->string('name', 100);
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('state');
+        Schema::dropIfExists('flocks');
     }
 };
