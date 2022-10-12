@@ -12,9 +12,9 @@
             <div class="col-lg-8">
                 <div class="card-body py-5 px-md-5">
                     <div class="text-center">
-                        <h1>Sistema Administrativo</h1>
+                        <h1>Bem-vindo ao Gado Manager</h1>
                     </div>
-                    <form action="{{route('backoffice.login')}}" method="post">
+                    <form action="{{route('site.login')}}" method="post">
                         @csrf
                         <div class="form-outline mb-4">
                             <label class="form-label" for="email">Email</label>
@@ -28,16 +28,16 @@
                             <span class="badge bg-danger">{{$errors->has('password') ? $errors->first('password') : ''}}</span>
                         </div>
                         <div class="row mb-4">
-                                <div class="form-check ml-3">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"/>
-                                    <label class="form-check-label" for="remember"> Manter-me conectado </label>
-                                </div>
+                            <div class="form-check ml-3">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"/>
+                                <label class="form-check-label" for="remember"> Manter-me conectado </label>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block mb-4 loginBtn">Entrar</button>
                     </form>
-{{--                    <div class="col">--}}
-{{--                        <a href="#!">Esqueceu a Senha?</a>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="col">--}}
+                    {{--                        <a href="#!">Esqueceu a Senha?</a>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BackOfficeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,25 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::prefix('backoffice')->group(function (){
-    Route::get('/', [BackOfficeController::class, 'index'])->name('backoffice.index');
+// ROTAS DO BACKOFFICE
+Route::group(['prefix' => 'backoffice'], function(){
+    Route::get('', [BackOfficeController::class, 'index'])->name('backoffice.index')->middleware('auth:admin');
     Route::get('/login', [LoginController::class, 'loginBackOffice'])->name('backoffice.login');
     Route::post('/login', [LoginController::class, 'authBackOffice'])->name('backoffice.login');
-    Route::get('/users', [BackOfficeController::class, 'users'])->name('backoffice.users');
+    Route::get('/users', [BackOfficeController::class, 'users'])->name('backoffice.users')->middleware('auth:admin');
 });
 
-Route::get('/login', function(){
-    return view('login.index');
-});
+// ROTAS DO SITE
+Route::get('/login', [LoginController::class, 'loginSite'])->name('site.login');
+Route::post('/login', [LoginController::class, 'authSite'])->name('site.login');
+
+
+
+Route::get('/', [HomeController::class, 'index'])->name('web.index');
+
 
 Route::get('/404', function(){
     abort('404');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

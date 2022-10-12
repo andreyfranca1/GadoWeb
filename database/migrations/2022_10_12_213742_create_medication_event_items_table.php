@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('medication_event_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('cpf', 20);
-            $table->string('phone', 20);
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->foreignId('event_id')->constrained('medication_events');
+            $table->foreignId('medicine_id')->constrained('medicines');
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('medication_event_items');
     }
 };
