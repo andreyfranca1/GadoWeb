@@ -41,8 +41,9 @@ class LoginController extends Controller
     public function authBackOffice(Request $request): RedirectResponse
     {
         $credentials = $request->validate($this->rules, $this->errorMessage);
+        $remember = $request->get('remember');
 
-        if (Auth::guard('admin')->attempt($credentials)){
+        if (Auth::guard('admin')->attempt($credentials, $remember)){
             $request->session()->regenerate();
 
             return redirect()->route('backoffice.index');
@@ -66,11 +67,12 @@ class LoginController extends Controller
     public function authSite(Request $request): RedirectResponse
     {
         $credentials = $request->validate($this->rules, $this->errorMessage);
+        $remember = $request->get('remember');
 
-        if (Auth::guard('admin')->attempt($credentials)){
+        if (Auth::guard()->attempt($credentials, $remember)){
             $request->session()->regenerate();
 
-            return redirect()->route('backoffice.index');
+            return redirect()->route('site.index');
         }
 
         return back()->withErrors([
