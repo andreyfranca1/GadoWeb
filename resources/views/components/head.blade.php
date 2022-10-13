@@ -11,4 +11,7 @@
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+    <!-- Data table -->
+    <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+
 </head>

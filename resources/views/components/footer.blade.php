@@ -14,8 +14,12 @@
 <script src="{{asset('assets/libs/chartist/dist/chartist.min.js')}}"></script>
 <script src="{{asset('assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script>
+
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
 <script>
     $(document).ready(function(){
         $(".preloader").fadeOut();
+        $('#dataTable').DataTable();
     })
 </script>

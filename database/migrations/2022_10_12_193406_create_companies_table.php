@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('record_type', 10);
+            $table->string('type', 10);
             $table->string('name', 255);
             $table->string('doc_number', 20);
             $table->string('doc_number2', 20);
