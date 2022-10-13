@@ -24,6 +24,7 @@ Route::group(['prefix' => 'backoffice'], function(){
     Route::post('/login', [LoginController::class, 'authBackOffice'])->name('backoffice.login');
     Route::get('/companies', [CompanyController::class, 'index'])->name('backoffice.companies')->middleware('auth:admin');
     Route::get('/users', [BackOfficeController::class, 'users'])->name('backoffice.users')->middleware('auth:admin');
+    Route::get('/addUser', [BackOfficeController::class, 'addUserView'])->name('backoffice.addUser')->middleware('auth:admin');
     Route::get('/logout', [LoginController::class, 'logout'])->name('backoffice.logout');
 });
 

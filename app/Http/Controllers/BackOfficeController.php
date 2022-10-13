@@ -26,4 +26,14 @@ class BackOfficeController extends Controller
 
         return view('backoffice.users', ['users' => $users, 'count' => $count]);
     }
+
+    public function addUserView()
+    {
+        return view('backoffice.users.addUser');
+    }
+
+    public function addUser()
+    {
+        
+    }
 }

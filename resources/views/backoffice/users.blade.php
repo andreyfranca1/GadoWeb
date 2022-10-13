@@ -36,7 +36,15 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-3">
+                        <a class="btn btn-primary mr-2" href="{{route('backoffice.addUser')}}"> Adicionar Novo Usuário</a>
+                    </div>
+                </div>
             </div>
+
+
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
