@@ -22,6 +22,7 @@ Route::group(['prefix' => 'backoffice'], function(){
     Route::get('/login', [LoginController::class, 'loginBackOffice'])->name('backoffice.login');
     Route::post('/login', [LoginController::class, 'authBackOffice'])->name('backoffice.login');
     Route::get('/users', [BackOfficeController::class, 'users'])->name('backoffice.users')->middleware('auth:admin');
+    Route::get('/addUser', [BackOfficeController::class, 'addUserView'])->name('backoffice.addUser')->middleware('auth:admin');
 });
 
 // ROTAS DO SITE

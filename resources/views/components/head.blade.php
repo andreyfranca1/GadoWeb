@@ -11,4 +11,5 @@
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+    <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
 </head>
