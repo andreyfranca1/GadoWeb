@@ -19,7 +19,8 @@ class Authenticate extends Middleware
             if (in_array('auth:admin', $request->route()->middleware())) {
                 return route('backoffice.login');
             }
-            return route('login');
         }
+
+        return route('site.login');
     }
 }
