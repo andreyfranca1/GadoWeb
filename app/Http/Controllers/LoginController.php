@@ -54,6 +54,17 @@ class LoginController extends Controller
         ])->onlyInput('password');
     }
 
+    public function logoutBackOffice(Request $request): Redirector|Application|RedirectResponse
+    {
+        Auth::guard('admin')->logout();
+
+        // $request->session()->invalidate();
+        //
+        // $request->session()->regenerateToken();
+
+        return redirect('/backoffice/login');
+    }
+
 
     public function loginSite(): View|Factory|RedirectResponse|Application
     {
@@ -80,15 +91,16 @@ class LoginController extends Controller
         ])->onlyInput('password');
     }
 
-
-    public function logoutBackOffice(Request $request): Redirector|Application|RedirectResponse
+    public function logoutSite(Request $request): Redirector|Application|RedirectResponse
     {
-        Auth::guard('admin')->logout();
+        Auth::logout();
+        //
+        // $request->session()->invalidate();
+        //
+        // $request->session()->regenerateToken();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/backoffice/login');
+        return redirect('/login');
     }
+
+
 }
