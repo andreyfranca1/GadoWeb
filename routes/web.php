@@ -34,6 +34,7 @@ Route::group(['prefix' => 'backoffice'], function(){
 // ROTAS DO SITE
 Route::get('/login', [LoginController::class, 'loginSite'])->name('site.login');
 Route::post('/login', [LoginController::class, 'authSite'])->name('site.login');
+Route::get('/logout', [LoginController::class, 'logoutSite'])->name('site.logout');
 
 
 
