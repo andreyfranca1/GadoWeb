@@ -10,16 +10,16 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        
+
         @include('components.header')
-        
+
         @include('components.backoffice.sidebar')
-        
+
         <div class="page-wrapper">
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
@@ -29,7 +29,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('backoffice.index')}}">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="{{route('backoffice.users')}}">Usuários</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('backoffice.user.index')}}">Usuários</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Adicionar Usuário</li>
                                 </ol>
                             </nav>
@@ -48,14 +48,14 @@
                     <div class="card-body">
                         <form>
                             <div class="form-group">
-                                <label>Tipo de cadastro</label> 
+                                <label>Tipo de cadastro</label>
                                 <div>
                                     <div class="form-check form-check-inline">
-                                        <input name="tipoCadastro" id="tipoCadastro_0" type="radio" class="form-check-input" value="PF"> 
+                                        <input name="tipoCadastro" id="tipoCadastro_0" type="radio" class="form-check-input" value="PF">
                                         <label for="tipoCadastro_0" class="form-check-label">Pessoa Fisica</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input name="tipoCadastro" id="tipoCadastro_1" type="radio" class="form-check-input" value="PJ"> 
+                                        <input name="tipoCadastro" id="tipoCadastro_1" type="radio" class="form-check-input" value="PJ">
                                         <label for="tipoCadastro_1" class="form-check-label">Pessoa Juridica</label>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="companyName" id="companyNameLabel">Razão Social</label> 
+                                        <label for="companyName" id="companyNameLabel">Razão Social</label>
                                         <input id="companyName" name="companyName" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
@@ -71,26 +71,26 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="doc_number" id="doc_numberLabel">CPF</label> 
+                                        <label for="doc_number" id="doc_numberLabel">CPF</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <i class="fa fa-address-card"></i>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <input id="doc_number" name="doc_number" type="text" required="required" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="doc_number2" id="doc_number2Label">RG/IE</label> 
+                                        <label for="doc_number2" id="doc_number2Label">RG/IE</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <i class="fa fa-credit-card"></i>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <input id="doc_number2" name="doc_number2" type="text" required="required" class="form-control">
                                         </div>
                                     </div>
@@ -98,29 +98,29 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-5">
                                     <div class="form-group">
-                                        <label for="text">Email</label> 
+                                        <label for="text">Email</label>
                                         <input id="text" name="text" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="phone">Telefone</label> 
+                                        <label for="phone">Telefone</label>
                                         <input id="phone" name="phone" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="cellphone">Celular</label> 
+                                        <label for="cellphone">Celular</label>
                                         <input id="cellphone" name="cellphone" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
@@ -128,39 +128,39 @@
                             <div class="row">
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label for="cep">CEP</label> 
+                                        <label for="cep">CEP</label>
                                         <input id="cep" name="cep" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-5">
                                     <div class="form-group">
-                                        <label for="address">Endereço</label> 
+                                        <label for="address">Endereço</label>
                                         <input id="address" name="address" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
-                                        <label for="number">Número</label> 
+                                        <label for="number">Número</label>
                                         <input id="number" name="number" type="text" required="required" class="form-control">
-                                    </div>    
+                                    </div>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="row">
                                 <div class="col-2">
                                     <div class="form-group">
-                                        <label for="district">Bairro</label> 
+                                        <label for="district">Bairro</label>
                                         <input id="district" name="district" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="city">Cidade</label> 
+                                        <label for="city">Cidade</label>
                                         <input id="city" name="city" type="text" required="required" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
-                                        <label for="state">Estado</label> 
+                                        <label for="state">Estado</label>
                                         <select id="state" name="state" required="required" class="form-control">
                                             <option value=""></option>
                                         </select>
@@ -170,10 +170,10 @@
                             <div class="row">
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label for="born_date" id="born_dateLabel">Data de Nascimento</label> 
+                                        <label for="born_date" id="born_dateLabel">Data de Nascimento</label>
                                         <input id="born_date" name="born_date" type="date" required="required" class="form-control">
-                                    </div> 
-                                </div>        
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
@@ -182,7 +182,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-    
+
 </body>
 @include('components.footer')
 </html>

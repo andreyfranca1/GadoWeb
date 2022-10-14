@@ -36,10 +36,10 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-3">
-                        <a class="btn btn-primary mr-2" href="{{route('backoffice.addUser')}}"> Adicionar Novo Usuário</a>
+                        <a class="btn btn-primary mr-2" href="{{route('backoffice.user.new')}}"> Adicionar Novo Usuário</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="dataTable">
                                 <thead>
                                 <tr>
                                     <th>#</th>

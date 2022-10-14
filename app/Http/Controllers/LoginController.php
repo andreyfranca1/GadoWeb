@@ -81,10 +81,9 @@ class LoginController extends Controller
     }
 
 
-    public function logout(Request $request): Redirector|Application|RedirectResponse
+    public function logoutBackOffice(Request $request): Redirector|Application|RedirectResponse
     {
-
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 
