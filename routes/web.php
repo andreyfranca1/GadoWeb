@@ -4,6 +4,7 @@ use App\Http\Controllers\BackOfficeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,11 @@ Route::group(['prefix' => 'backoffice'], function(){
     Route::get('/login', [LoginController::class, 'loginBackOffice'])->name('backoffice.login');
     Route::post('/login', [LoginController::class, 'authBackOffice'])->name('backoffice.login');
     Route::get('/companies', [CompanyController::class, 'index'])->name('backoffice.companies')->middleware('auth:admin');
-    Route::get('/users', [BackOfficeController::class, 'users'])->name('backoffice.users')->middleware('auth:admin');
-    Route::get('/addUser', [BackOfficeController::class, 'addUserView'])->name('backoffice.addUser')->middleware('auth:admin');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('backoffice.logout');
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('', [UserController::class, 'index'])->name('backoffice.user.index')->middleware('auth:admin');
+        Route::get('/new', [UserController::class, 'newUser'])->name('backoffice.user.new')->middleware('auth:admin');
+    });
+    Route::get('/logout', [LoginController::class, 'logoutBackOffice'])->name('backoffice.logout');
 });
 
 // ROTAS DO SITE
