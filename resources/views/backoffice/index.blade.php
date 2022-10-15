@@ -10,16 +10,16 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-
+    
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-
+        
         @include('components.backoffice.header')
-
+        
         @include('components.backoffice.sidebar')
-
+        
         <div class="page-wrapper">
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
@@ -43,19 +43,21 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-
+                <div class="row">
+                    
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+    
 </body>
-    @include('components.footer')
+@include('components.footer')
 </html>
