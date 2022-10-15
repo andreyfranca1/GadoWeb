@@ -1,15 +1,11 @@
-@import "@fortawesome/fontawesome-free/css/all.css";
-@import "bootstrap/dist/css/bootstrap.min.css";
-
 .avatar {
     position:relative;
-    width:4.375rem;
-    height:4.375rem;
+    width:2.375rem;
+    height:2.375rem;
     cursor:pointer
 }
 .avatar .avatar-initial {
     position: absolute;
-    font-size: 26px;
     top: 0;
     left: 0;
     right: 0;
