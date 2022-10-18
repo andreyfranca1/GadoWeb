@@ -23,7 +23,7 @@
                 <li class="dropdown sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-cow"></i><span class="hide-menu">Bovinos</span></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item sidebar-link" href="#"><i class="mdi mdi-cow"></i>Bovinos</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.bovinos.listar')}}"><i class="mdi mdi-cow"></i>Bovinos</a></li>
                         <li><a class="dropdown-item sidebar-link" href="#"><i class="mdi mdi-bell-outline"></i>Rebanhos</a></li>
                         <li><a class="dropdown-item sidebar-link" href="#"><i class="mdi mdi-weight-kilogram"></i>Pesagens</a></li>
                     </ul>

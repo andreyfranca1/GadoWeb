@@ -9,9 +9,8 @@
     <title>@yield('title', 'Gado Manager')</title>
     <!-- Custom CSS -->
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <!-- Data table -->
     <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
