@@ -2,7 +2,17 @@
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
 // Variables
-@import 'variables';
+@import './theme/variable.scss';
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Tema
+@import './theme/bootstrap/bootstrap.scss';
+@import './theme/style.scss';
+
+//This is for the icons (Required file)
+@import './theme/icons/font-awesome/css/fontawesome-all.css';
+@import './theme/icons/themify-icons/themify-icons.css';
+@import "./theme/icons/material-design-iconic-font/css/materialdesignicons.min.css";
+@import "./theme/icons/weather-icons/css/weather-icons.min.css";

@@ -5,6 +5,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BovinosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,11 @@ Route::get('/login', [LoginController::class, 'loginSite'])->name('site.login');
 Route::post('/login', [LoginController::class, 'authSite'])->name('site.login');
 Route::get('/logout', [LoginController::class, 'logoutSite'])->name('site.logout');
 
+Route::group(['prefix' => 'bovinos'], function (){
+    Route::get('/adicionar', [BovinosController::class, 'addBovinos'])->name('site.bovinos.adicionar');
+    Route::get('/listar', [BovinosController::class, 'listBovinos'])->name('site.bovinos.listar');
+
+});
 
 
 Route::get('/', [HomeController::class, 'index'])->name('site.index')->middleware('auth');
