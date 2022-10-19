@@ -19,7 +19,6 @@
                 </li>
                 <!-- User Profile-->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('site.index')}}" aria-expanded="false"><i class="fas fa-home"></i><span class="hide-menu">Tela inicial</span></a></li>
-{{--                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('backoffice.companies')}}" aria-expanded="false"><i class="mdi mdi-cow"></i><span class="hide-menu">Bovinos</span></a></li>--}}
                 <li class="dropdown sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-cow"></i><span class="hide-menu">Bovinos</span></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
