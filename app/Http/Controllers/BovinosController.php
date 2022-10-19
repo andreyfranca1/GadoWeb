@@ -11,4 +11,9 @@ class BovinosController extends Controller
     {
         return view('site.bovinos.index');
     }
+
+    public function addBovinoView()
+    {
+        return view('site.bovinos.addBovino');
+    }
 }
