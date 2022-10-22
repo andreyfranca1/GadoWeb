@@ -197,6 +197,14 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
+                                                <label for="nameUser">Nome do Usuário</label>
+                                                <input id="nameUser" name="nameUser" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
                                                 <label for="emailUser">Email de Login</label>
                                                 <input id="emailUser" name="emailUser" type="text" class="form-control">
                                             </div>
@@ -251,7 +259,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
