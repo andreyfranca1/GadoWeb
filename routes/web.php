@@ -6,6 +6,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BovinosController;
+use App\Http\Controllers\RebanhosController;
+use App\Http\Controllers\PesagensController;
+use App\Http\Controllers\AlimentosController;
+use App\Http\Controllers\MedicamentosController;
+use App\Http\Controllers\VacinasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +50,25 @@ Route::group(['prefix' => 'bovinos'], function (){
     Route::get('/adicionar', [BovinosController::class, 'addBovinoView'])->name('site.bovinos.adicionar');
     Route::get('/listar', [BovinosController::class, 'listBovinos'])->name('site.bovinos.listar');
 
+});
+Route::group(['prefix' => 'rebanhos'], function (){
+    Route::get('/listar', [RebanhosController::class, 'listRebanhos'])->name('site.rebanhos.listar');
+});
+
+Route::group(['prefix' => 'pesagens'], function(){
+    Route::get('/listar', [PesagensController::class, 'listPesagens'])->name('site.pesagens.listar');
+});
+
+Route::group(['prefix' => 'alimentos'], function(){
+    Route::get('/listar', [AlimentosController::class, 'listAlimentos'])->name('site.alimentos.listar');
+});
+
+Route::group(['prefix' => 'medicamentos'], function(){
+    Route::get('/listar', [MedicamentosController::class, 'listMedicamentos'])->name('site.medicamentos.listar');
+});
+
+Route::group(['prefix' => 'vacinas'], function(){
+    Route::get('/listar', [VacinasController::class, 'listVacinas'])->name('site.vacinas.listar');
 });
 
 
