@@ -15,6 +15,11 @@ class CompanyController extends Controller
         $companies = Company::all();
         $count = count($companies);
 
-        return view('backoffice.companies', ['companies' => $companies, 'count' => $count]);
+        return view('backoffice.companies.index', ['companies' => $companies, 'count' => $count]);
+    }
+
+    public function newCompany()
+    {
+        return view('backoffice.companies.new');
     }
 }

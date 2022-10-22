@@ -16,7 +16,7 @@
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        @include('components.header')
+        @include('components.backoffice.header')
 
         @include('components.backoffice.sidebar')
 
@@ -35,6 +35,9 @@
                             </nav>
                         </div>
                     </div>
+                </div>
+                <div class="col-3">
+                    <a class="btn btn-primary mr-2" href="{{route('backoffice.company.new')}}"> Adicionar empresa</a>
                 </div>
             </div>
             <!-- ============================================================== -->

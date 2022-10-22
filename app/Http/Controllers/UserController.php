@@ -15,7 +15,7 @@ class UserController extends Controller
         $users = User::all();
         $count = count($users);
 
-        return view('backoffice.users', ['users' => $users, 'count' => $count]);
+        return view('backoffice.users.index', ['users' => $users, 'count' => $count]);
     }
 
     public function newUser(): Factory|View|Application
