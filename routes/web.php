@@ -24,7 +24,11 @@ Route::group(['prefix' => 'backoffice'], function(){
     Route::get('', [BackOfficeController::class, 'index'])->name('backoffice.index')->middleware('auth:admin');
     Route::get('/login', [LoginController::class, 'loginBackOffice'])->name('backoffice.login');
     Route::post('/login', [LoginController::class, 'authBackOffice'])->name('backoffice.login');
-    Route::get('/companies', [CompanyController::class, 'index'])->name('backoffice.companies')->middleware('auth:admin');
+    Route::group(['prefix' => 'companies'], function () {
+        Route::get('', [CompanyController::class, 'index'])->name('backoffice.company.index')->middleware('auth:admin');
+        Route::get('/new', [CompanyController::class, 'newCompany'])->name('backoffice.company.new')->middleware('auth:admin');
+
+    });
     Route::group(['prefix' => 'users'], function () {
         Route::get('', [UserController::class, 'index'])->name('backoffice.user.index')->middleware('auth:admin');
         Route::get('/new', [UserController::class, 'newUser'])->name('backoffice.user.new')->middleware('auth:admin');
