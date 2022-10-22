@@ -42,7 +42,7 @@ Route::post('/login', [LoginController::class, 'authSite'])->name('site.login');
 Route::get('/logout', [LoginController::class, 'logoutSite'])->name('site.logout');
 
 Route::group(['prefix' => 'bovinos'], function (){
-    Route::get('/adicionar', [BovinosController::class, 'addBovinos'])->name('site.bovinos.adicionar');
+    Route::get('/adicionar', [BovinosController::class, 'addBovinoView'])->name('site.bovinos.adicionar');
     Route::get('/listar', [BovinosController::class, 'listBovinos'])->name('site.bovinos.listar');
 
 });

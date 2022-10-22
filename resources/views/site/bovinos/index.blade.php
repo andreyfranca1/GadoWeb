@@ -36,6 +36,11 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-3">
+                    <a class="btn btn-primary mr-2" href="{{route('site.bovinos.adicionar')}}"> Adicionar Novo Bovino</a>
+                </div>
+            </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
@@ -44,7 +49,23 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
-            
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>ID Brinco</th>
+                                <th>Nome</th>
+                                <th>Raça</th>
+                                <th>Peso</th>
+                                <th>Rebanho</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
