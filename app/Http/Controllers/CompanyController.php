@@ -62,12 +62,13 @@ class CompanyController extends Controller
             'cpfUser.required' => 'Informe o CPF do usuário.',
             'userPhone.required' => 'Informe o telefone do usuário.',
             'passUser.required' => 'O campo senha é obrigatório',
-            'passUserConfirm.required' => 'Necessário informar a confirmação da senha'
+            'passUserConfirm.required' => 'Necessário confirmação da senha'
         ];
 
         $request->validate($rules, $errorMessage);
 
         $request['doc_number'] = removeCaracteres($request['doc_number']);
+        $request['cpfUser'] = removeCaracteres($request['cpfUser']);
 
         if ($request['tipoCadastro'] == "PF") {
             if (!validaCPF($request['doc_number'])) {
@@ -79,6 +80,14 @@ class CompanyController extends Controller
             }
         }
 
+        if (!validaCPF($request['cpfUser'])) {
+            return back()->withErrors(['CPF Inválido para o cadastro do usuário.']);
+        }
+
+        if ($request['passUser'] != $request['passUserConfirm']) {
+            return back()->withErrors(['As senhas não coincidem.']);
+        }
+
         try {
             $company = new Company();
 
@@ -87,9 +96,9 @@ class CompanyController extends Controller
             $company->doc_number = $request['doc_number'];
             $company->doc_number2 = !empty($request['doc_number2']) ? $request['doc_number2'] : "ISENTO";
             $company->email = $request['email'];
-            $company->phone =  $request['phone'];
-            $company->cellphone =  $request['cellphone'];
-            $company->cep =  $request['cep'];
+            $company->phone =  removeCaracteres($request['phone']);
+            $company->cellphone =  removeCaracteres($request['cellphone']);
+            $company->cep =  removeCaracteres($request['cep']);
             $company->address =  $request['address'];
             $company->number =  $request['number'];
             $company->district =  $request['district'];
@@ -106,14 +115,14 @@ class CompanyController extends Controller
             $user->name = $request['nameUser'];
             $user->email = $request['emailUser'];
             $user->cpf = $request['cpfUser'];
-            $user->phone = $request['userPhone'];
-            $user->password= Hash::make($request['passUser']);
+            $user->phone = removeCaracteres($request['userPhone']);
+            $user->password= Hash::make(trim($request['passUser']));
 
             $user->save();
         } catch (Throwable $t) {
             return back()->withErrors(['Erro ao cadastrar empresa.']);
         }
 
-        return back()->with('status', 'Empresa cadastrada com sucesso');
+        return back()->with('success', 'Empresa cadastrada com sucesso');
     }
 }

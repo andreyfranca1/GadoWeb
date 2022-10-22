@@ -4,6 +4,7 @@ use App\Http\Controllers\BackOfficeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BovinosController;
 use App\Http\Controllers\RebanhosController;
@@ -37,8 +38,9 @@ Route::group(['prefix' => 'backoffice'], function(){
     });
 
     Route::group(['prefix' => 'users', 'middleware' => 'auth:admin'], function () {
-        Route::get('', [UserController::class, 'index'])->name('backoffice.user.index');
-        Route::get('/new', [UserController::class, 'newUser'])->name('backoffice.user.new');
+        Route::get('', [UserAdminController::class, 'index'])->name('backoffice.user.index');
+        Route::post('/new', [UserAdminController::class, 'newUser'])->name('backoffice.user.new');
+        Route::view('/new', 'backoffice.users.new')->name('backoffice.user.new');
     });
 
     Route::get('/logout', [LoginController::class, 'logoutBackOffice'])->name('backoffice.logout');

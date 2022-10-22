@@ -47,14 +47,81 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row mb-2">
-                        <form>
+                        <form action="{{route('backoffice.user.new')}}" method="post">
+                            @csrf
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="empresa" role="tabpanel" aria-labelledby="nav-empresa-tab">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-4">
                                             <div class="form-group">
                                                 <label for="name" id="nameLabel">Nome Completo</label>
                                                 <input id="name" name="name" type="text" required="required" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="cpf" id="cpfLabel">CPF</label>
+                                                <div class="input-group">
+                                                    <input id="cpf" name="cpf" type="text" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="cellphone" id="cellphoneLabel">Celular</label>
+                                                <div class="input-group">
+                                                    <input id="cellphone" name="cellphone" type="text" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="cep" id="cepLabel">Cep</label>
+                                                <div class="input-group">
+                                                    <input id="cep" name="cep" type="text" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="form-group">
+                                                <label for="address" id="addressLabel">Logradouro</label>
+                                                <div class="input-group">
+                                                    <input id="address" name="address" type="text" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="number" id="numberLabel">Número</label>
+                                                <div class="input-group">
+                                                    <input id="number" name="number" type="text" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="district" id="districtLabel">Bairro</label>
+                                                <input id="district" name="district" type="text" required="required" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="city" id="cityLabel">Cidade</label>
+                                                <div class="input-group">
+                                                    <input id="city" name="city" type="text" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="state">Estado</label>
+                                                <select id="state" name="state" class="form-control">
+                                                    <option value=""></option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -75,11 +142,19 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="passwordConfirm" id="passwordConfirmLabel">Confirmar Senha</label>
+                                                <div class="input-group">
+                                                    <input id="passwordConfirm" name="passwordConfirm" type="password" required="required" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-8">
-                                            <div class="form-group float-right">
-                                                <button class="btn btn-lg btn-primary" id="proxButton" type="button">Cadastrar</button>
+                                            <div class="form-group">
+                                                <button class="btn btn-lg btn-primary" type="submit">Cadastrar</button>
                                             </div>
                                         </div>
                                     </div>
