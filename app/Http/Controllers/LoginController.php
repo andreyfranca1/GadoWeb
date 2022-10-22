@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\User;
 use App\Models\UserAdmin;
 use Illuminate\Contracts\Foundation\Application;
@@ -54,13 +55,9 @@ class LoginController extends Controller
         ])->onlyInput('password');
     }
 
-    public function logoutBackOffice(Request $request): Redirector|Application|RedirectResponse
+    public function logoutBackOffice(): Redirector|Application|RedirectResponse
     {
         Auth::guard('admin')->logout();
-
-        // $request->session()->invalidate();
-        //
-        // $request->session()->regenerateToken();
 
         return redirect('/backoffice/login');
     }
@@ -82,6 +79,18 @@ class LoginController extends Controller
 
         if (Auth::guard()->attempt($credentials, $remember)){
             $request->session()->regenerate();
+            $company = Company::query()
+                ->where('id', '=', Auth::user()['company_id'])
+                ->get('status')
+                ->first();
+
+            if ($company['status'] == 0) {
+                Auth::logout();
+
+                return back()->withErrors([
+                    'Empresa bloqueada, para mais informações entre em contato com o administrador!',
+                ]);
+            }
 
             return redirect()->route('site.index');
         }
@@ -91,13 +100,9 @@ class LoginController extends Controller
         ])->onlyInput('password');
     }
 
-    public function logoutSite(Request $request): Redirector|Application|RedirectResponse
+    public function logoutSite(): Redirector|Application|RedirectResponse
     {
         Auth::logout();
-        //
-        // $request->session()->invalidate();
-        //
-        // $request->session()->regenerateToken();
 
         return redirect('/login');
     }

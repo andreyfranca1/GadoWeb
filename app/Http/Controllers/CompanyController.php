@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class CompanyController extends Controller
 {
@@ -24,7 +25,7 @@ class CompanyController extends Controller
     public function newCompany(Request $request)
     {
         $rules = [
-            'type' => ['required'],
+            'tipoCadastro' => ['required'],
             'companyName' => ['required'],
             'doc_number' => ['required'],
             'cellphone' => ['required'],
@@ -33,7 +34,7 @@ class CompanyController extends Controller
             'number' => ['required'],
             'district' => ['required'],
             'city' => ['required'],
-            'state' => ['required'],
+            // 'state' => ['required'],
             'born_date' => ['required'],
             'nameUser' => ['required'],
             'emailUser' => ['required', 'email'],
@@ -44,7 +45,7 @@ class CompanyController extends Controller
         ];
 
         $errorMessage = [
-            'type.required' => 'Selecione o tipo da empresa.',
+            'tipoCadastro.required' => 'Selecione o tipo da empresa.',
             'companyName.required' => 'Informe o nome da empresa.',
             'doc_number.required' => 'Informe o CPF/CNPJ da empresa.',
             'cellphone.required' => 'Informe o celular da empresa.',
@@ -53,7 +54,7 @@ class CompanyController extends Controller
             'number.required' => 'Informe o número do endereço da empresa.',
             'district.required' => 'Informe o bairro do endereço da empresa.',
             'city.required' => 'Informe a cidade da empresa.',
-            'state.required' => 'Informe o estado da empresa.',
+            // 'state.required' => 'Informe o estado da empresa.',
             'born_date.required' => 'Informe a data de abertura da empresa.',
             'nameUser.required' => 'Informe o nome do usuário.',
             'emailUser.required' => 'Informe o email do usuário.',
@@ -66,34 +67,53 @@ class CompanyController extends Controller
 
         $request->validate($rules, $errorMessage);
 
-        $company = new Company();
+        $request['doc_number'] = removeCaracteres($request['doc_number']);
 
-        $company->type = $request['tipoCadastro'];
-        $company->name = $request['companyName'];
-        $company->doc_number = $request['doc_number'];
-        $company->doc_number2 = !empty($request['doc_number2']) ? $request['doc_number2'] : "ISENTO";
-        $company->email = $request['email'];
-        $company->phone =  $request['phone'];
-        $company->cellphone =  $request['cellphone'];
-        $company->cep =  $request['cep'];
-        $company->address =  $request['address'];
-        $company->number =  $request['number'];
-        $company->district =  $request['district'];
-        $company->city =  $request['city'];
-        $company->state =  $request['state'];
-        $company->born_date = $request['born_date'];
+        if ($request['tipoCadastro'] == "PF") {
+            if (!validaCPF($request['doc_number'])) {
+                return back()->withErrors(['CPF Inválido para o cadastro da empresa.']);
+            }
+        } else {
+            if (!validaCNPJ($request['doc_number'])) {
+                return back()->withErrors(['CNPJ Inválido para o cadastro da empresa.']);
+            }
+        }
 
-        $company->save();
+        try {
+            $company = new Company();
 
-        $user = new User();
+            $company->type = $request['tipoCadastro'];
+            $company->name = $request['companyName'];
+            $company->doc_number = $request['doc_number'];
+            $company->doc_number2 = !empty($request['doc_number2']) ? $request['doc_number2'] : "ISENTO";
+            $company->email = $request['email'];
+            $company->phone =  $request['phone'];
+            $company->cellphone =  $request['cellphone'];
+            $company->cep =  $request['cep'];
+            $company->address =  $request['address'];
+            $company->number =  $request['number'];
+            $company->district =  $request['district'];
+            $company->city =  $request['city'];
+            $company->state =  "RS";
+            $company->born_date = $request['born_date'];
+            $company->status = 1;
 
-        $user->company_id = $company->id;
-        $user->name = $request['nameUser'];
-        $user->email = $request['emailUser'];
-        $user->cpf = $request['cpfUser'];
-        $user->phone = $request['userPhone'];
-        $user->password= Hash::make($request['passUser']);
+            $company->save();
 
-        $user->save();
+            $user = new User();
+
+            $user->company_id = $company->id;
+            $user->name = $request['nameUser'];
+            $user->email = $request['emailUser'];
+            $user->cpf = $request['cpfUser'];
+            $user->phone = $request['userPhone'];
+            $user->password= Hash::make($request['passUser']);
+
+            $user->save();
+        } catch (Throwable $t) {
+            return back()->withErrors(['Erro ao cadastrar empresa.']);
+        }
+
+        return back()->with('status', 'Empresa cadastrada com sucesso');
     }
 }
