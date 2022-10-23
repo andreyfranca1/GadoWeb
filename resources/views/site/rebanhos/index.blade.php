@@ -10,17 +10,17 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -60,6 +60,15 @@
                                 <th>Descrição</th>
                             </tr>
                             </thead>
+                            <tbody>
+                            @foreach($rebanhos as $rebanho)
+                                <tr>
+                                    <td>{{$rebanho['id']}}</td>
+                                    <td>{{$rebanho['name']}}</td>
+                                    <td>{{$rebanho['description']}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -69,7 +78,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -85,21 +94,21 @@
           </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form action="{{route('site.rebanhos.novo')}}" method="post">
+                @csrf
                 <div class="form-group">
-                  <label for="rebanhoNome">Nome</label> 
-                  <input id="rebanhoNome" name="rebanhoNome" type="text" class="form-control">
+                  <label for="rebanhoNome">Nome</label>
+                  <input id="rebanhoNome" name="name" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="rebanhoDescricao">Descrição</label> 
-                  <textarea id="rebanhoDescricao" name="rebanhoDescricao" cols="40" rows="5" class="form-control"></textarea>
-                </div> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-primary">Salvar</button>
-        </div>
-    </form>
+                  <label for="rebanhoDescricao">Descrição</label>
+                  <textarea id="rebanhoDescricao" name="description" cols="40" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
       </div>
     </div>
   </div>

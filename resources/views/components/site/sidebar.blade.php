@@ -22,17 +22,17 @@
                 <li class="dropdown sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-cow"></i><span class="hide-menu">Bovinos</span></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item sidebar-link" href="{{route('site.bovinos.listar')}}"><i class="mdi mdi-cow"></i>Bovinos</a></li>
-                        <li><a class="dropdown-item sidebar-link" href="{{route('site.rebanhos.listar')}}"><i class="mdi mdi-bell-outline"></i>Rebanhos</a></li>
-                        <li><a class="dropdown-item sidebar-link" href="{{route('site.pesagens.listar')}}"><i class="mdi mdi-weight-kilogram"></i>Pesagens</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.bovinos.index')}}"><i class="mdi mdi-cow"></i>Bovinos</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.rebanhos.index')}}"><i class="mdi mdi-bell-outline"></i>Rebanhos</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.pesagens.index')}}"><i class="mdi mdi-weight-kilogram"></i>Pesagens</a></li>
                     </ul>
                 </li>
                 <li class="dropdown sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-playlist-plus"></i><span class="hide-menu">Cadastros Adicionais</span></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item sidebar-link" href="{{route('site.alimentos.listar')}}"><i class="mdi mdi-food"></i>Alimentos</a></li>
-                        <li><a class="dropdown-item sidebar-link" href="{{route('site.medicamentos.listar')}}"><i class="fas fa-capsules"></i>Medicamentos</a></li>
-                        <li><a class="dropdown-item sidebar-link" href="{{route('site.vacinas.listar')}}"><i class="fas fa-syringe"></i>Vacinas</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.alimentos.index')}}"><i class="mdi mdi-food"></i>Alimentos</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.medicamentos.index')}}"><i class="fas fa-capsules"></i>Medicamentos</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.vacinas.index')}}"><i class="fas fa-syringe"></i>Vacinas</a></li>
                     </ul>
                 </li>
                 <li class="dropdown sidebar-item">

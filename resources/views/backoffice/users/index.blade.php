@@ -64,14 +64,16 @@
                                     <th>Data de Criação</th>
                                 </tr>
                                 </thead>
+                                <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                        <th>{{$user['id']}}</th>
-                                        <th>{{$user['name']}}</th>
-                                        <th>{{$user['email']}}</th>
-                                        <th>{{date('d/m/Y h:i',strtotime($user['created_at']))}}</th>
+                                        <td>{{$user['id']}}</td>
+                                        <td>{{$user['name']}}</td>
+                                        <td>{{$user['email']}}</td>
+                                        <td>{{date('d/m/Y h:i',strtotime($user['created_at']))}}</td>
                                     </tr>
                                 @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

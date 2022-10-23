@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PesagensController extends Controller
 {
-    public function listPesagens()
+    public function index()
     {
         return View('site.pesagens.index');
     }

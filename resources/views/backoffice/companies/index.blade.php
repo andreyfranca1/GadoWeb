@@ -59,14 +59,16 @@
                                     <th>Data de Criação</th>
                                 </tr>
                                 </thead>
+                                <tbody>
                                 @foreach($companies as $company)
                                     <tr>
-                                        <th>{{$company['id']}}</th>
-                                        <th>{{$company['name']}}</th>
-                                        <th>{{$company['email']}}</th>
-                                        <th>{{date('d/m/Y h:i',strtotime($company['created_at']))}}</th>
+                                        <td>{{$company['id']}}</td>
+                                        <td>{{$company['name']}}</td>
+                                        <td>{{$company['email']}}</td>
+                                        <td>{{date('d/m/Y h:i',strtotime($company['created_at']))}}</td>
                                     </tr>
                                 @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
