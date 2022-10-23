@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('weighings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cattle_id')->constrained();
-            $table->boolean('first');
             $table->double('weight');
-            $table->mediumText('description');
+            $table->mediumText('description')->nullable();
             $table->timestamps();
         });
     }

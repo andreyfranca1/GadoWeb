@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class MedicamentosController extends Controller
 {
-    public function listMedicamentos()
+    public function index()
     {
         return View("site.medicamentos.index");
     }

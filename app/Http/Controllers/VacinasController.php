@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class VacinasController extends Controller
 {
-    
-    public function listVacinas()
+
+    public function index()
     {
         return View('site.vacinas.index');
     }
