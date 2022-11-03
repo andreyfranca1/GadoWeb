@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Session;
 
 class LoginController extends Controller
 {
@@ -92,6 +93,9 @@ class LoginController extends Controller
                 ]);
             }
 
+
+            session()->put('userName', Auth::user()->name);
+            session()->put('userEmail', Auth::user()->email);
             return redirect()->route('site.index');
         }
 
