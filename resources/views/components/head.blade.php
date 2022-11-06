@@ -14,6 +14,9 @@
     <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <!-- Data table -->
     <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-    
-    
+
+    <script>
+        let rootUrl = '{{url('/')}}'
+    </script>
+
 </head>

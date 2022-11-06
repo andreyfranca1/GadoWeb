@@ -8,6 +8,7 @@ use App\Models\Flock;
 use App\Models\Weighing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class BovinosController extends Controller
@@ -70,5 +71,14 @@ class BovinosController extends Controller
         }
 
         return back()->with('success', 'Bovino cadastrado com sucesso');
+    }
+
+    public function getBovinosByGender(){
+
+        $bovinos = Cattle::select('sex', DB::raw('count(*) as total'))->where('company_id', '=', Auth::user()['company_id'])
+            ->groupby('sex')
+            ->get();
+
+        echo json_encode($bovinos->toArray());
     }
 }

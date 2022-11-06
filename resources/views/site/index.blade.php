@@ -10,19 +10,19 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     @vite(['resources/js/dash.js'])
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -54,7 +54,7 @@
                                 <span class="avatar-initial rounded-circle bg-success"><i class="fa-solid fa-cow"></i></span>
                             </div>
                             <span class="d-block mb-1">Gados Cadastrados</span>
-                            <h2 class="mb-0">69 LOL XD</h2>
+                            <h2 class="mb-0">{{$metrics['cattles']}}</h2>
                         </div>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
                             <div class="avatar avatar-md mx-auto mb-3">
                                 <span class="avatar-initial rounded-circle bg-warning"><i class="bx bx-dock-top fs-3"></i></span>
                             </div>
-                            <span class="d-block mb-1 text-nowrap">Attached Files</span>
-                            <h2 class="mb-0">17</h2>
+                            <span class="d-block mb-1 text-nowrap">Rebanhos Cadastrados</span>
+                            <h2 class="mb-0">{{$metrics['flocks']}}</h2>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
                             <div class="avatar avatar-md mx-auto mb-3">
                                 <span class="avatar-initial rounded-circle bg-primary"><i class="bx bx-edit fs-3"></i></span>
                             </div>
-                            <span class="d-block mb-1 text-nowrap">New Posts</span>
-                            <h2 class="mb-0">48</h2>
+                            <span class="d-block mb-1 text-nowrap">Pesagens Nos Últimos 30 Dias</span>
+                            <h2 class="mb-0">{{$metrics['weighings']}}</h2>
                         </div>
                     </div>
                 </div>
@@ -86,8 +86,8 @@
                             <div class="avatar avatar-md mx-auto mb-3">
                                 <span class="avatar-initial rounded-circle bg-danger"><i class="bx bx-dock-top fs-3"></i></span>
                             </div>
-                            <span class="d-block mb-1 text-nowrap">Attached Files</span>
-                            <h2 class="mb-0">17</h2>
+                            <span class="d-block mb-1 text-nowrap">Eventos de Saúde Nos Últimos 30 dias</span>
+                            <h2 class="mb-0">{{$metrics['events']}}</h2>
                         </div>
                     </div>
                 </div>
@@ -97,12 +97,12 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    
+
                 </div>
-                
+
                 <div class="col-5">
                     <div class="card p-5">
-                        
+
                         <p>Proximos Eventos de Saúde</p>
                         <div id="accordion">
                             <div class="card">
@@ -113,7 +113,7 @@
                                         </button>
                                     </h5>
                                 </div>
-                                
+
                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-12"></div>
@@ -161,7 +161,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
