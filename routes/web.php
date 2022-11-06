@@ -12,6 +12,7 @@ use App\Http\Controllers\PesagensController;
 use App\Http\Controllers\AlimentosController;
 use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\VacinasController;
+use App\Http\Controllers\EventosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,7 +73,7 @@ Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
 });
 
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
-    Route::get('/index', [AlimentosController::class, 'index'])->name('site.alimentos.index');
+    Route::get('/index', [AlimentosController::class, 'listAlimentos'])->name('site.alimentos.index');
 });
 
 Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
@@ -81,6 +82,12 @@ Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
 
 Route::group(['prefix' => 'vacinas'], function(){
     Route::get('/index', [VacinasController::class, 'index'])->name('site.vacinas.index');
+});
+
+Route::group(['prefix' => 'eventos'], function(){
+    Route::get('/alimentacao', [EventosController::class,'listEventosAlimentacao'])->name('site.eventosAlimentacao.index');
+    Route::get('/medicacao',[EventosController::class, 'listEventosMedicacao'])->name('site.eventosMedicacao.index');
+    Route::get('/vacinacao', [EventosController::class, 'listEventosVacinacao'])->name('site.eventosVacinacao.index');
 });
 
 
