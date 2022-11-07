@@ -35,7 +35,7 @@ class LoginController extends Controller
         if (Auth::guard('admin')->check()) {
             return redirect()->route('backoffice.index');
         }
-
+                
         return view('backoffice.login');
     }
 
@@ -46,7 +46,8 @@ class LoginController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials, $remember)){
             $request->session()->regenerate();
-
+            session()->put('userName', Auth::guard('admin')->user()->name);
+            session()->put('userEmail', Auth::guard('admin')->user()->email);
             return redirect()->route('backoffice.index');
         }
 

@@ -38,9 +38,9 @@
                 <li class="dropdown sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"><i class="far fa-calendar-alt"></i><span class="hide-menu">Eventos</span></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item sidebar-link" href="#"><i class="mdi mdi-food"></i>Eventos de Alimentação</a></li>
-                        <li><a class="dropdown-item sidebar-link" href="#"><i class="fas fa-capsules"></i>Eventos de Medicação</a></li>
-                        <li><a class="dropdown-item sidebar-link" href="#"><i class="fas fa-syringe"></i>Eventos de Vacinação</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.eventosAlimentacao.index')}}"><i class="mdi mdi-food"></i>Eventos de Alimentação</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.eventosMedicacao.index')}}"><i class="fas fa-capsules"></i>Eventos de Medicação</a></li>
+                        <li><a class="dropdown-item sidebar-link" href="{{route('site.eventosVacinacao.index')}}"><i class="fas fa-syringe"></i>Eventos de Vacinação</a></li>
                     </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('site.usuarios.index')}}" aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Usuários</span></a></li>

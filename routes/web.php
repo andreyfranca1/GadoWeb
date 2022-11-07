@@ -85,6 +85,12 @@ Route::group(['prefix' => 'vacinas', 'middleware' => "auth"], function(){
     Route::post('novo', [VacinasController::class, 'novaVacina'])->name('site.vacinas.novo');
 });
 
+Route::group(['prefix' => 'eventos'], function(){
+    Route::get('/alimentacao', [EventosController::class,'listEventosAlimentacao'])->name('site.eventosAlimentacao.index');
+    Route::get('/medicacao',[EventosController::class, 'listEventosMedicacao'])->name('site.eventosMedicacao.index');
+    Route::get('/vacinacao', [EventosController::class, 'listEventosVacinacao'])->name('site.eventosVacinacao.index');
+});
+
 Route::group(['prefix' => 'usuarios', 'middleware' => "auth"], function(){
     Route::get('', [UserController::class, 'index'])->name('site.usuarios.index');
     Route::post('novo', [UserController::class, 'novoUsuario'])->name('site.usuarios.novo');
