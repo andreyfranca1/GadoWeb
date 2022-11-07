@@ -43,7 +43,7 @@
                         <li><a class="dropdown-item sidebar-link" href="#"><i class="fas fa-syringe"></i>Eventos de Vacinação</a></li>
                     </ul>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('backoffice.user.index')}}" aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Usuários</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('site.usuarios.index')}}" aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Usuários</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('site.logout')}}" aria-expanded="false"><i class="fa fa-power-off m-r-5 m-l-5"></i><span>Sair</span></a></li>
             </ul>
 

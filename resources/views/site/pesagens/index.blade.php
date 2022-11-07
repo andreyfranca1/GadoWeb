@@ -100,11 +100,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="idBrinco">ID Brinco</label>
-                        <input id="idBrinco" name="idBrinco" type="text" class="form-control">
+                        <input id="idBrinco" name="idBrinco" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="peso">Peso</label>
-                        <input id="peso" name="peso" type="text" class="form-control">
+                        <input id="peso" name="peso" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="descricao">Descrição</label>

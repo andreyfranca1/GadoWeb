@@ -80,10 +80,16 @@ Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
     Route::get('/index', [MedicamentosController::class, 'index'])->name('site.medicamentos.index');
 });
 
-Route::group(['prefix' => 'vacinas'], function(){
-    Route::get('/index', [VacinasController::class, 'index'])->name('site.vacinas.index');
+Route::group(['prefix' => 'vacinas', 'middleware' => "auth"], function(){
+    Route::get('', [VacinasController::class, 'index'])->name('site.vacinas.index');
+    Route::post('novo', [VacinasController::class, 'novaVacina'])->name('site.vacinas.novo');
 });
 
+Route::group(['prefix' => 'usuarios', 'middleware' => "auth"], function(){
+    Route::get('', [UserController::class, 'index'])->name('site.usuarios.index');
+    Route::post('novo', [UserController::class, 'novoUsuario'])->name('site.usuarios.novo');
+    Route::view('/novo', 'site.users.new')->name('backoffice.company.new');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('site.index')->middleware('auth');
 
