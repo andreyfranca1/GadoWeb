@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_vaccination_event_items', function (Blueprint $table) {
+        Schema::create('vaccination_event_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('event_id')->constrained('vaccination_events');
             $table->foreignId('vaccine_id')->constrained('vaccines');

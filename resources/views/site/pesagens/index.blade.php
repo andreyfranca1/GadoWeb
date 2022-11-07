@@ -10,17 +10,17 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -58,10 +58,19 @@
                                     <th>ID Brinco</th>
                                     <th>Nome Bovino</th>
                                     <th>Peso</th>
-                                    <th>Descrição</th>
                                     <th>Data Cadastro</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                            @foreach($pesagens as $pesagem)
+                                <tr>
+                                    <td>{{$pesagem['bovine_earring_id']}}</td>
+                                    <td>{{$pesagem['name']}}</td>
+                                    <td>{{$pesagem['weight']}}</td>
+                                    <td>{{date('d/m/Y h:i',strtotime($pesagem['created_at']))}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -71,7 +80,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -87,21 +96,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{route('site.pesagens.novo')}}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <label for="idBrinco">ID Brinco</label> 
+                        <label for="idBrinco">ID Brinco</label>
                         <input id="idBrinco" name="idBrinco" type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="peso">Peso</label> 
+                        <label for="peso">Peso</label>
                         <input id="peso" name="peso" type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="descricao">Descrição</label> 
+                        <label for="descricao">Descrição</label>
                         <textarea id="descricao" name="descricao" cols="40" rows="5" class="form-control"></textarea>
-                    </div> 
+                    </div>
                     <div class="form-group">
-                        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
