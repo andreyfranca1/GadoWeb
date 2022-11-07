@@ -10,17 +10,17 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -62,6 +62,21 @@
                                 <th>Rebanho</th>
                             </tr>
                             </thead>
+                            <tbody>
+                            @foreach($gados as $gado)
+                                <tr>
+                                    <td>{{$gado['bovine_earring_id']}}</td>
+                                    <td>{{$gado['name']}}</td>
+                                    <td>{{$gado['breed_name']}}</td>
+                                    <td>{{$gado['peso']}}</td>
+                                    @if($gado['flock_name'])
+                                        <td>{{$gado['flock_name']}}</td>
+                                    @else
+                                        <td>Sem rebanho</td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -71,7 +86,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

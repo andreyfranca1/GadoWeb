@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
@@ -22,7 +23,7 @@ class CompanyController extends Controller
     }
 
 
-    public function newCompany(Request $request)
+    public function newCompany(Request $request): RedirectResponse
     {
         $rules = [
             'tipoCadastro' => ['required'],

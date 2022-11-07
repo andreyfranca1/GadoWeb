@@ -69,7 +69,8 @@ Route::group(['prefix' => 'rebanhos', 'middleware' => "auth"], function () {
 });
 
 Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
-    Route::get('/index', [PesagensController::class, 'index'])->name('site.pesagens.index');
+    Route::get('', [PesagensController::class, 'index'])->name('site.pesagens.index');
+    Route::post('/novo', [PesagensController::class, 'novaPesagem'])->name('site.pesagens.novo');
 });
 
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
