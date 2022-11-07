@@ -10,17 +10,17 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -60,6 +60,15 @@
                                     <th>Data de Cadastro</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                            @foreach($vacinas as $vacina)
+                                <tr>
+                                    <td>{{$vacina['name']}}</td>
+                                    <td>{{$vacina['description']}}</td>
+                                    <td>{{date('d/m/Y h:i',strtotime($vacina['created_at']))}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -69,7 +78,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -79,23 +88,24 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalVacinasLabel">Inserir Medicação</h5>
+                <h5 class="modal-title" id="modalVacinasLabel">Inserir Vacina</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{route('site.vacinas.novo')}}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <label for="nomeAlimento">Nome</label> 
-                        <input id="nomeAlimento" name="nomeAlimento" type="text" class="form-control">
+                        <label for="nomeVacina">Nome</label>
+                        <input id="nomeVacina" name="nomeVacina" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="descricao">Descrição</label> 
+                        <label for="descricao">Descrição</label>
                         <textarea id="descricao" name="descricao" cols="40" rows="5" class="form-control"></textarea>
-                    </div> 
+                    </div>
                     <div class="form-group">
-                        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
