@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackOfficeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EventosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserAdminController;
@@ -87,8 +88,13 @@ Route::group(['prefix' => 'vacinas', 'middleware' => "auth"], function(){
     Route::post('novo', [VacinasController::class, 'novaVacina'])->name('site.vacinas.novo');
 });
 
-Route::group(['prefix' => 'eventos'], function(){
-    Route::get('/alimentacao', [EventosController::class,'listEventosAlimentacao'])->name('site.eventosAlimentacao.index');
+Route::group(['prefix' => 'eventos', 'middleware' => 'auth'], function(){
+
+    Route::group(['prefix' => 'alimentacao', 'middleware' => 'auth'], function(){
+        Route::get('', [EventosController::class,'listEventosAlimentacao'])->name('site.eventosAlimentacao.index');
+        Route::post('/novo', [EventosController::class,'novoEventoAlimentacao'])->name('site.eventosAlimentacao.novo');
+    });
+
     Route::get('/medicacao',[EventosController::class, 'listEventosMedicacao'])->name('site.eventosMedicacao.index');
     Route::get('/vacinacao', [EventosController::class, 'listEventosVacinacao'])->name('site.eventosVacinacao.index');
 });
