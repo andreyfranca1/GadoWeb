@@ -90,10 +90,19 @@ class BovinosController extends Controller
 
     public function getBovinosByGender(){
 
-        $bovinos = Cattle::select('sex', DB::raw('count(*) as total'))->where('company_id', '=', Auth::user()['company_id'])
-            ->groupby('sex')
+        $bovinosMachos = Cattle::select(DB::raw('count(*) as total'))->where('company_id', '=', Auth::user()['company_id'])
+            ->where('sex', '=', 1)
+            ->get();
+        $bovinosFemeas = Cattle::select(DB::raw('count(*) as total'))->where('company_id', '=', Auth::user()['company_id'])
+            ->where('sex', '=', 0)
             ->get();
 
-        echo json_encode($bovinos->toArray());
+            
+            $bovinos = [
+                'machos' => $bovinosMachos->first()->total,
+                'femeas' => $bovinosFemeas->first()->total
+            ];
+
+        echo json_encode($bovinos);
     }
 }

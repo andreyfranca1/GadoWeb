@@ -1,3 +1,10 @@
+<?php 
+    const TIPOS_ALIMENTOS = [
+        1 => 'Ração',
+        2 => 'Orgânica',
+        3 => 'Suplemento'
+    ]
+?>
 <!DOCTYPE html>
 @include('components.head')
 <body>
@@ -61,6 +68,16 @@
                                     <th>Data Cadastro</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($alimentos as $item)
+                                    <tr>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{TIPOS_ALIMENTOS[$item->type]}}</td>
+                                        <td>{{$item->description}}</td>
+                                        <td>{{date("d/m/Y", strtotime($item->created_at))}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -86,7 +103,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{route('site.alimentos.novo')}}" method="POST">
+                    @csrf
                     <div class="form-group">
                       <label for="nomeAlimento">Nome</label> 
                       <input id="nomeAlimento" name="nomeAlimento" type="text" class="form-control">
@@ -94,9 +112,9 @@
                     <div class="form-group">
                       <label for="tipoAlimento">Tipo</label> 
                       <select id="tipoAlimento" name="tipoAlimento" class="form-control">
-                        <option value="racao">Ração</option>
-                        <option value="organica">Orgânica</option>
-                        <option value="suplemento">Suplemento</option>
+                        <option value="1">Ração</option>
+                        <option value="2">Orgânica</option>
+                        <option value="3">Suplemento</option>
                       </select>
                     </div>
                     <div class="form-group">

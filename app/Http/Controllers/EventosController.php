@@ -21,5 +21,5 @@ class EventosController extends Controller
     {
         return view('site.eventos.eventosVac.index');
     }
-    
+
 }
