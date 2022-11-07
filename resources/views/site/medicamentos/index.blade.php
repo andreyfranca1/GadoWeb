@@ -60,6 +60,15 @@
                                     <th>Data de Cadastro</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($medicamentos as $item)
+                                    <tr>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->description}}</td>
+                                        <td>{{date("d/m/Y", strtotime($item->created_at))}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -85,10 +94,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{route('site.medicamentos.novo')}}" method="POST">
+                    @csrf
                     <div class="form-group">
-                      <label for="nomeAlimento">Nome</label> 
-                      <input id="nomeAlimento" name="nomeAlimento" type="text" class="form-control">
+                      <label for="nomeMedicamento">Nome</label> 
+                      <input id="nomeMedicamento" name="nomeMedicamento" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                       <label for="descricao">Descrição</label> 

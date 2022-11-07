@@ -9,7 +9,7 @@ $('document').ready(function () {
             response = JSON.parse(response)
 
             var options = {
-                series: [response[0]['total'], response[1]['total']],
+                series: [response.femeas, response.machos],
                 labels: ['Bois Fêmeas', 'Bois Machos'],
                 chart: {
                     type: 'donut',
