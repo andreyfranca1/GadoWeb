@@ -12,7 +12,6 @@ use App\Http\Controllers\PesagensController;
 use App\Http\Controllers\AlimentosController;
 use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\VacinasController;
-use App\Http\Controllers\EventosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,13 +68,13 @@ Route::group(['prefix' => 'rebanhos', 'middleware' => "auth"], function () {
 });
 
 Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
-    Route::get('/index', [PesagensController::class, 'index'])->name('site.pesagens.index');
+    Route::get('', [PesagensController::class, 'index'])->name('site.pesagens.index');
+    Route::post('/novo', [PesagensController::class, 'novaPesagem'])->name('site.pesagens.novo');
 });
 
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
     Route::get('/index', [AlimentosController::class, 'listAlimentos'])->name('site.alimentos.index');
     Route::post('/newAlimento', [AlimentosController::class, 'addAlimento'])->name('site.alimentos.novo');
-
 });
 
 Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
@@ -83,8 +82,9 @@ Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
     Route::post('/newMedicamento', [MedicamentosController::class, 'addMedicamento'])->name('site.medicamentos.novo');
 });
 
-Route::group(['prefix' => 'vacinas'], function(){
-    Route::get('/index', [VacinasController::class, 'index'])->name('site.vacinas.index');
+Route::group(['prefix' => 'vacinas', 'middleware' => "auth"], function(){
+    Route::get('', [VacinasController::class, 'index'])->name('site.vacinas.index');
+    Route::post('novo', [VacinasController::class, 'novaVacina'])->name('site.vacinas.novo');
 });
 
 Route::group(['prefix' => 'eventos'], function(){
@@ -93,6 +93,11 @@ Route::group(['prefix' => 'eventos'], function(){
     Route::get('/vacinacao', [EventosController::class, 'listEventosVacinacao'])->name('site.eventosVacinacao.index');
 });
 
+Route::group(['prefix' => 'usuarios', 'middleware' => "auth"], function(){
+    Route::get('', [UserController::class, 'index'])->name('site.usuarios.index');
+    Route::post('novo', [UserController::class, 'novoUsuario'])->name('site.usuarios.novo');
+    Route::view('/novo', 'site.users.new')->name('backoffice.company.new');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('site.index')->middleware('auth');
 

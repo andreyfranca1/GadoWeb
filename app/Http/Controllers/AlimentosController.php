@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Food;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Throwable;
 
 class AlimentosController extends Controller
 {
-    public function listAlimentos()
+    public function index(): Factory|View|Application
     {
         $alimentos = new Food();
 

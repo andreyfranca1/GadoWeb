@@ -30,7 +30,7 @@ class HomeController extends Controller
         return view('site.index', ['metrics' => $this->getMetrics()]);
     }
 
-    public function getMetrics()
+    public function getMetrics(): array
     {
 
 

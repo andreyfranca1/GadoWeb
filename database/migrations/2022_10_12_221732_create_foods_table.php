@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained('companies');
             $table->string('name', 100);
             $table->integer('type');
             $table->mediumText('description');
