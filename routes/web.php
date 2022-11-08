@@ -12,6 +12,7 @@ use App\Http\Controllers\PesagensController;
 use App\Http\Controllers\AlimentosController;
 use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\VacinasController;
+use App\Http\Controllers\EventosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,7 @@ Route::get('/logout', [LoginController::class, 'logoutSite'])->name('site.logout
 
 Route::group(['prefix' => 'ajax'], function(){
      Route::get('/getBovinosByGender', [BovinosController::class, 'getBovinosByGender'])->name('site.ajaxMetrics');
+     Route::post('/getBovinoById', [BovinosController::class, 'getBovinoById'])->name('site.bovinos.id');
 });
 
 
@@ -73,7 +75,7 @@ Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
 });
 
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
-    Route::get('/index', [AlimentosController::class, 'listAlimentos'])->name('site.alimentos.index');
+    Route::get('/index', [AlimentosController::class, 'index'])->name('site.alimentos.index');
     Route::post('/newAlimento', [AlimentosController::class, 'addAlimento'])->name('site.alimentos.novo');
 });
 
