@@ -13,7 +13,6 @@ use App\Http\Controllers\PesagensController;
 use App\Http\Controllers\AlimentosController;
 use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\VacinasController;
-use App\Http\Controllers\EventosController;
 use Illuminate\Support\Facades\Route;
 
 /*
