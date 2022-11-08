@@ -223,7 +223,7 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="cpfUser">CPF</label>
-                                                <input id="cpfUser" name="cpfUser" type="text" class="form-control">
+                                                <input id="cpfUser" name="cpfUser" type="text" class="form-control cpf">
                                             </div>
                                         </div>
                                     </div>
@@ -304,7 +304,7 @@
                     $('#doc_numberLabel').text('CPF')
                     $('#doc_number').removeClass('cnpj')
                     $('#doc_number').addClass('cpf')
-                    $('.cpf').inputmask('999.999.999-99')
+                    $('.cpf').mask('999.999.999-99')
                     $('#doc_number2Label').text('RG')
 
 
@@ -317,7 +317,7 @@
                     $('#doc_number').removeClass('cpf')
                     $('#doc_number').addClass('cnpj')
 
-                    $('.cnpj').inputmask('99.999.999/9999-99')
+                    $('.cnpj').mask('99.999.999/9999-99')
 
                     $('#doc_number2Label').text('IE')
                     $('#born_dateLabel').text('Data de Abertura')
@@ -334,13 +334,8 @@
             setTimeout(() => {
                 $('#liveToast').fadeOut()
             }, 2000);
-        
-            
-            $('.cpf').inputmask('999.999.999-99')
         })
-
-        
-
+        $('#tipoCadastro_0').trigger('click')
     </script>
 </body>
 @include('components.footer')
