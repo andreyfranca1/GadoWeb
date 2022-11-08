@@ -10,34 +10,16 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        
+
         @include('components.backoffice.header')
-        
+
         @include('components.backoffice.sidebar')
-        
-            @if (!empty($errors->all()))
-            <div class="position-fixed top-0 end-0 p-3 mt-5" style="z-index: 11">
-                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <i class="fas fa-times mr-1" style="color: red"></i>
-                        <strong class="me-auto"> Gado Manager</strong>
-                        <small>11 mins ago</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        @foreach($errors->all() as $error)
-                        <p>{{$error}}</p>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-           @endif
-        
+
         <div class="page-wrapper">
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
@@ -76,7 +58,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <form action="{{route('backoffice.company.new')}}" method="post">
                             @csrf
                             <div class="tab-content">
@@ -138,7 +120,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group">
@@ -202,7 +184,7 @@
                                                 <input id="born_date" name="born_date" type="date" class="form-control">
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
@@ -261,7 +243,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-5">
                                             <div class="form-group">
@@ -287,64 +269,56 @@
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <script>
-                
+
                 $('#proxButton').click(function(){
                     $('#empresa').removeClass('active')
                     $('#empresa').removeClass('show')
                     $('#empresa').addClass('hide')
                     $('#nav-empresa-tab').removeClass('active')
                     $('#nav-empresa-tab').addClass('disabled')
-                    
-                    
+
+
                     $('#usuario').addClass('active')
                     $('#usuario').addClass('show')
                     $('#nav-usuario-tab').addClass('active')
                     $('#nav-usuario-tab').removeClass('disabled')
-                    
+
                 })
-                
+
                 $('#voltButton').click(function(){
                     $('#usuario').removeClass('active')
                     $('#usuario').removeClass('show')
                     $('#usuario').addClass('hide')
                     $('#nav-usuario-tab').removeClass('active')
                     $('#nav-usuario-tab').addClass('disabled')
-                    
-                    
+
+
                     $('#empresa').addClass('active')
                     $('#empresa').addClass('show')
                     $('#nav-empresa-tab').addClass('active')
                     $('#nav-empresa-tab').removeClass('disabled')
                 })
-                
+
                 $('#tipoCadastro_0').click(function (){
                     $('#companyNameLabel').text('Nome Completo')
                     $('#doc_numberLabel').text('CPF')
                     $('#doc_number2Label').text('RG')
                     $('#born_dateLabel').text('Data de Nascimento')
                 })
-                
+
                 $('#tipoCadastro_1').click(function (){
                     $('#companyNameLabel').text('Razão Social')
                     $('#doc_numberLabel').text('CNPJ')
                     $('#doc_number2Label').text('IE')
                     $('#born_dateLabel').text('Data de Abertura')
                 })
-                
+
             </script>
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-    <script>
-        $(document).ready(function(){
-            setTimeout(() => {
-                $('#liveToast').fadeOut()
-            }, 2000);
-        })
-        
-    </script>
 </body>
 @include('components.footer')
 

@@ -18,6 +18,12 @@
 
 <script>
     $(document).ready(function(){
+        setTimeout(() => {
+            $('#liveToast').fadeOut()
+        }, 5000);
+    })
+
+    $(document).ready(function(){
         $(".preloader").fadeOut();
         $('#dataTable').DataTable({
             language: {
