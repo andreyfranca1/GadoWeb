@@ -272,6 +272,7 @@
     
     $('#btnFechar').click(function(){
         $('.form-control').val('')
+        $('#pesagemHistorico').html('')
         $('#modalBovino').modal('hide')
     })
     
