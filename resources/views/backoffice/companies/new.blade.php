@@ -342,8 +342,9 @@
             setTimeout(() => {
                 $('#liveToast').fadeOut()
             }, 2000);
+            $('#doc_number').inputmask('999.999.999-99')
         })
-        
+
     </script>
 </body>
 @include('components.footer')
