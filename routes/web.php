@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackOfficeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EventosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserAdminController;
@@ -75,12 +76,12 @@ Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
 });
 
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
-    Route::get('/index', [AlimentosController::class, 'index'])->name('site.alimentos.index');
+    Route::get('', [AlimentosController::class, 'index'])->name('site.alimentos.index');
     Route::post('/newAlimento', [AlimentosController::class, 'addAlimento'])->name('site.alimentos.novo');
 });
 
 Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
-    Route::get('/index', [MedicamentosController::class, 'index'])->name('site.medicamentos.index');
+    Route::get('', [MedicamentosController::class, 'index'])->name('site.medicamentos.index');
     Route::post('/newMedicamento', [MedicamentosController::class, 'addMedicamento'])->name('site.medicamentos.novo');
 });
 
@@ -89,10 +90,22 @@ Route::group(['prefix' => 'vacinas', 'middleware' => "auth"], function(){
     Route::post('novo', [VacinasController::class, 'novaVacina'])->name('site.vacinas.novo');
 });
 
-Route::group(['prefix' => 'eventos'], function(){
-    Route::get('/alimentacao', [EventosController::class,'listEventosAlimentacao'])->name('site.eventosAlimentacao.index');
-    Route::get('/medicacao',[EventosController::class, 'listEventosMedicacao'])->name('site.eventosMedicacao.index');
-    Route::get('/vacinacao', [EventosController::class, 'listEventosVacinacao'])->name('site.eventosVacinacao.index');
+Route::group(['prefix' => 'eventos', 'middleware' => 'auth'], function(){
+
+    Route::group(['prefix' => 'alimentacao', 'middleware' => 'auth'], function(){
+        Route::get('', [EventosController::class,'listEventosAlimentacao'])->name('site.eventosAlimentacao.index');
+        Route::post('/novo', [EventosController::class,'novoEventoAlimentacao'])->name('site.eventosAlimentacao.novo');
+    });
+
+    Route::group(['prefix' => 'medicacao', 'middleware' => 'auth'], function (){
+       Route::get('', [EventosController::class, 'listEventosMedicacao'])->name('site.eventosMedicacao.index');
+       Route::post('novo', [EventosController::class, 'novoEventoMedicacao'])->name('site.eventosMedicacao.novo');
+    });
+
+    Route::group(['prefix' => 'vacinacao', 'middleware' => 'auth'], function (){
+       Route::get('', [EventosController::class, 'listEventosVacinacao'])->name('site.eventosVacinacao.index');
+       Route::post('novo', [EventosController::class, 'novoEventoVacinacao'])->name('site.eventosVacinacao.novo');
+    });
 });
 
 Route::group(['prefix' => 'usuarios', 'middleware' => "auth"], function(){

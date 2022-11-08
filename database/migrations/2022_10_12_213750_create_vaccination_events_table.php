@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('vaccination_events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('flock_id')->constrained('flocks');
-            $table->string('name', 100);
             $table->string('application_type');
             $table->string('batch', 100);
             $table->mediumText('description');
             $table->string('vet');
+            $table->date('date');
             $table->timestamps();
         });
     }
