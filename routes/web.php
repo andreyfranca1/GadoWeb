@@ -74,12 +74,12 @@ Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
 });
 
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
-    Route::get('/index', [AlimentosController::class, 'listAlimentos'])->name('site.alimentos.index');
+    Route::get('', [AlimentosController::class, 'index'])->name('site.alimentos.index');
     Route::post('/newAlimento', [AlimentosController::class, 'addAlimento'])->name('site.alimentos.novo');
 });
 
 Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
-    Route::get('/index', [MedicamentosController::class, 'index'])->name('site.medicamentos.index');
+    Route::get('', [MedicamentosController::class, 'index'])->name('site.medicamentos.index');
     Route::post('/newMedicamento', [MedicamentosController::class, 'addMedicamento'])->name('site.medicamentos.novo');
 });
 
