@@ -94,7 +94,7 @@
                                                             <i class="fa fa-address-card"></i>
                                                         </div>
                                                     </div>
-                                                    <input id="doc_number" name="doc_number" type="text" class="form-control">
+                                                    <input id="doc_number" name="doc_number" type="text" class="form-control cpf">
                                                 </div>
                                             </div>
                                         </div>
@@ -302,13 +302,23 @@
                 $('#tipoCadastro_0').click(function (){
                     $('#companyNameLabel').text('Nome Completo')
                     $('#doc_numberLabel').text('CPF')
+                    $('#doc_number').removeClass('cnpj')
+                    $('#doc_number').addClass('cpf')
+                    $('.cpf').inputmask('999.999.999-99')
                     $('#doc_number2Label').text('RG')
+
+
                     $('#born_dateLabel').text('Data de Nascimento')
                 })
 
                 $('#tipoCadastro_1').click(function (){
                     $('#companyNameLabel').text('Razão Social')
                     $('#doc_numberLabel').text('CNPJ')
+                    $('#doc_number').removeClass('cpf')
+                    $('#doc_number').addClass('cnpj')
+
+                    $('.cnpj').inputmask('99.999.999/9999-99')
+
                     $('#doc_number2Label').text('IE')
                     $('#born_dateLabel').text('Data de Abertura')
                 })
@@ -324,8 +334,13 @@
             setTimeout(() => {
                 $('#liveToast').fadeOut()
             }, 2000);
-        })
         
+            
+            $('.cpf').inputmask('999.999.999-99')
+        })
+
+        
+
     </script>
 </body>
 @include('components.footer')

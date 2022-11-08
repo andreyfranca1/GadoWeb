@@ -1,2 +1,2 @@
 import './bootstrap';
-import Inputmask from 'maskedinput/dist/inputmask/inputmask';
+import Inputmask from 'maskedinput/dist/jquery.inputmask.bundle';
