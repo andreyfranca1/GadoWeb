@@ -109,7 +109,7 @@ Route::group(['prefix' => 'eventos', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => 'usuarios', 'middleware' => "auth"], function(){
     Route::get('', [UserController::class, 'index'])->name('site.usuarios.index');
     Route::post('novo', [UserController::class, 'novoUsuario'])->name('site.usuarios.novo');
-    Route::view('/novo', 'site.users.new')->name('backoffice.company.new');
+    Route::view('/novo', 'site.users.new')->name('site.usuarios.novo');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('site.index')->middleware('auth');

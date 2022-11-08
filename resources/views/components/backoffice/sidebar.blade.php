@@ -29,3 +29,20 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
+
+@if (!empty($errors->all()))
+    <div class="position-fixed top-0 end-0 p-3 mt-5" style="z-index: 11">
+        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fas fa-times mr-1" style="color: red"></i>
+                <strong class="me-auto"> Gado Manager</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @foreach($errors->all() as $error)
+                    <p>{{$error}}</p>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
