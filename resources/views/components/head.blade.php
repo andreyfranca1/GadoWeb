@@ -13,6 +13,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('assets/libs/jquery.maskedinput/jquery.maskedinput.min.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <!-- Data table -->
     <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 

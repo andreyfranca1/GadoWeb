@@ -1,4 +1,4 @@
-<?php 
+<?php
     const TIPOS_ALIMENTOS = [
         1 => 'Ração',
         2 => 'Orgânica',
@@ -17,17 +17,17 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -66,6 +66,7 @@
                                     <th>Tipo</th>
                                     <th>Descrição</th>
                                     <th>Data Cadastro</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,6 +76,11 @@
                                         <td>{{TIPOS_ALIMENTOS[$item->type]}}</td>
                                         <td>{{$item->description}}</td>
                                         <td>{{date("d/m/Y", strtotime($item->created_at))}}</td>
+                                        <td>
+                                            <div class="text-right">
+                                                <a href="{{route('site.alimentos.excluir', ['id' => $item['id']])}}" class="btn btn-confirm-exclusao btn-danger">Excluir</a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -87,7 +93,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -106,11 +112,11 @@
                 <form action="{{route('site.alimentos.novo')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                      <label for="nomeAlimento">Nome</label> 
+                      <label for="nomeAlimento">Nome</label>
                       <input id="nomeAlimento" name="nomeAlimento" type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label for="tipoAlimento">Tipo</label> 
+                      <label for="tipoAlimento">Tipo</label>
                       <select id="tipoAlimento" name="tipoAlimento" class="form-control">
                         <option value="1">Ração</option>
                         <option value="2">Orgânica</option>
@@ -118,9 +124,9 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="descricao">Descrição</label> 
+                      <label for="descricao">Descrição</label>
                       <textarea id="descricao" name="descricao" cols="40" rows="5" class="form-control"></textarea>
-                    </div> 
+                    </div>
                     <div class="form-group">
                       <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                     </div>

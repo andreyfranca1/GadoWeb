@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
 
@@ -80,5 +81,16 @@ class UserController extends Controller
         }
 
         return back()->with('success', 'Usuário cadastrado com sucesso');
+    }
+
+    public function excluirUsuario($id): RedirectResponse
+    {
+        try {
+            DB::table('users')->delete($id);
+        } catch (Throwable $t) {
+            return back()->withErrors(['Erro ao excluir usuário.']);
+        }
+
+        return back()->with('success', 'Usuário deletado com sucesso!');
     }
 }

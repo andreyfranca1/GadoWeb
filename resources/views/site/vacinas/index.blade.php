@@ -58,6 +58,7 @@
                                     <th>Nome</th>
                                     <th>Descrição</th>
                                     <th>Data de Cadastro</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,6 +67,11 @@
                                     <td>{{$vacina['name']}}</td>
                                     <td>{{$vacina['description']}}</td>
                                     <td>{{date('d/m/Y h:i',strtotime($vacina['created_at']))}}</td>
+                                    <td>
+                                        <div class="text-right">
+                                            <a href="{{route('site.vacinas.excluir', ['id' => $vacina['id']])}}" class="btn btn-confirm-exclusao btn-danger">Excluir</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
