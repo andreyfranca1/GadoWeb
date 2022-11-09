@@ -54,11 +54,12 @@
                     <div class="table-responsive">
                         <table class="table table-striped" id="dataTable">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                             @foreach($rebanhos as $rebanho)
@@ -66,6 +67,12 @@
                                     <td>{{$rebanho['id']}}</td>
                                     <td>{{$rebanho['name']}}</td>
                                     <td>{{$rebanho['description']}}</td>
+                                    <td>
+                                        <div class="text-right">
+                                            <button type="button" class="modalBovinoShow btn btn-primary" data-bovino="{{$rebanho['id']}}">Visualizar/Editar</button>
+                                            <a href="{{route('site.rebanhos.excluir', ['id' => $rebanho['id']])}}" class="btn btn-confirm-exclusao btn-danger">Excluir</a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -112,7 +119,6 @@
       </div>
     </div>
   </div>
-
-</body>
+</div>
 
 @include('components.footer')

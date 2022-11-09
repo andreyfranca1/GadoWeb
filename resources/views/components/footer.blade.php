@@ -31,4 +31,19 @@
             }
         });
     })
+
+    $('a.btn-confirm-exclusao').confirm({
+        title: "ATENÇÃO",
+        content: "Deseja realmente realizar a exclusão?",
+        type: 'red',
+        buttons: {
+            Confirmar: {
+                btnClass: 'btn-red',
+                action: function() {
+                    location.href = this.$target.attr('href');
+                }
+            },
+            Cancelar: function (){}
+        }
+    });
 </script>

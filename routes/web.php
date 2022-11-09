@@ -62,11 +62,15 @@ Route::group(['prefix' => 'bovinos', 'middleware' => "auth"], function (){
     Route::get('/', [BovinosController::class, 'index'])->name('site.bovinos.index');
     Route::get('/adicionar', [BovinosController::class, 'novoBovino'])->name('site.bovinos.adicionar');
     Route::post('/adicionar', [BovinosController::class, 'cadastarBovino'])->name('site.bovinos.adicionar');
+    Route::post('/editar', [BovinosController::class, 'editarBovino'])->name('site.bovinos.editar');
+    Route::get('/excluir/{id}', [BovinosController::class, 'excluirBovino'])->name('site.bovinos.excluir');
 });
 
 Route::group(['prefix' => 'rebanhos', 'middleware' => "auth"], function () {
     Route::get('', [RebanhosController::class, 'index'])->name('site.rebanhos.index');
     Route::post('', [RebanhosController::class, 'novoRebanho'])->name('site.rebanhos.novo');
+    Route::get('/excluir/{id}', [RebanhosController::class, 'excluirRebanhos'])->name('site.rebanhos.excluir');
+
 });
 
 Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
@@ -77,16 +81,20 @@ Route::group(['prefix' => 'pesagens', 'middleware' => "auth"], function() {
 Route::group(['prefix' => 'alimentos', 'middleware' => "auth"], function() {
     Route::get('', [AlimentosController::class, 'index'])->name('site.alimentos.index');
     Route::post('/newAlimento', [AlimentosController::class, 'addAlimento'])->name('site.alimentos.novo');
+    Route::get('/excluir/{id}', [AlimentosController::class, 'excluirAlimento'])->name('site.alimentos.excluir');
+
 });
 
 Route::group(['prefix' => 'medicamentos', 'middleware' => "auth"], function() {
     Route::get('', [MedicamentosController::class, 'index'])->name('site.medicamentos.index');
     Route::post('/newMedicamento', [MedicamentosController::class, 'addMedicamento'])->name('site.medicamentos.novo');
+    Route::get('/excluir/{id}', [MedicamentosController::class, 'excluirMedicamento'])->name('site.medicamentos.excluir');
 });
 
 Route::group(['prefix' => 'vacinas', 'middleware' => "auth"], function(){
     Route::get('', [VacinasController::class, 'index'])->name('site.vacinas.index');
     Route::post('novo', [VacinasController::class, 'novaVacina'])->name('site.vacinas.novo');
+    Route::get('/excluir/{id}', [VacinasController::class, 'excluirVacina'])->name('site.vacinas.excluir');
 });
 
 Route::group(['prefix' => 'eventos', 'middleware' => 'auth'], function(){
@@ -111,6 +119,7 @@ Route::group(['prefix' => 'usuarios', 'middleware' => "auth"], function(){
     Route::get('', [UserController::class, 'index'])->name('site.usuarios.index');
     Route::post('novo', [UserController::class, 'novoUsuario'])->name('site.usuarios.novo');
     Route::view('/novo', 'site.users.new')->name('site.usuarios.novo');
+    Route::get('/excluir/{id}', [UserController::class, 'excluirUsuario'])->name('site.usuario.excluir');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('site.index')->middleware('auth');

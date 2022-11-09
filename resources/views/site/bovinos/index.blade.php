@@ -10,17 +10,17 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
+
     @include('components.site.header')
-    
+
     @include('components.site.sidebar')
-    
+
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -60,7 +60,7 @@
                                     <th>Raça</th>
                                     <th>Peso</th>
                                     <th>Rebanho</th>
-                                    <th>Ações</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,9 +76,9 @@
                                     <td>Sem rebanho</td>
                                     @endif
                                     <td>
-                                        <div class="align-items-end pl-3">
+                                        <div class="text-right">
                                             <button type="button" class="modalBovinoShow btn btn-primary" data-bovino="{{$gado['id']}}">Visualizar/Editar</button>
-                                            <a href="" class="btn btn-danger">Excluir</a>
+                                            <a href="{{route('site.bovinos.excluir', ['id' => $gado['id']])}}" class="btn btn-confirm-exclusao btn-danger">Excluir</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -93,7 +93,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -106,12 +106,13 @@
                 <h5 class="modal-title" id="modalBovinoLabel">Visualizar/Editar Bovino</h5>
             </div>
             <div class="modal-body">
-                <form action="{{route('site.bovinos.adicionar')}}" method="post">
+                <form action="{{route('site.bovinos.editar')}}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-4">
                             <label for="name" class="col-form-label">Nome</label>
                             <input id="name" name="name" type="text" class="form-control" required="required">
+                            <input type="hidden" name="idGado" id="idGado" class="form-control">
                         </div>
                         <div class="col-3">
                             <label for="IdBrinco" class="col-form-label">ID do Brinco</label>
@@ -143,7 +144,7 @@
                         </div>
                         <div class="col-4">
                             <label for="sexo" class="col-form-label">Sexo</label>
-                            
+
                             <select id="sexo" name="sexo" class="form-control" required="required" disabled>
                                 <option value="">Selecione</option>
                                 <option value="0">Fêmea</option>
@@ -172,20 +173,20 @@
                         </div>
                         <div class="col-4">
                             <label for="categoria" class="col-form-label">Categoria</label>
-                            
+
                             <select id="categoria" name="categoria" class="form-control" required="required">
                                 <option value="">Selecione</option>
                                 <option value="Gado de corte">Gado de corte</option>
                                 <option value="Gado Leiteiro">Gado Leiteiro</option>
                             </select>
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-4">
                             <label for="idPai" class="c col-form-label">Bovino Pai</label>
-                            
+
                             <select id="idPai" name="idPai" class="form-control">
                                 <option value="">Selecione</option>
                                 @foreach($pais as $pai)
@@ -195,7 +196,7 @@
                         </div>
                         <div class="col-4">
                             <label for="idMae" class="col-form-label">Bovino Mãe</label>
-                            
+
                             <select id="idMae" name="idMae" class="form-control">
                                 <option value="">Selecione</option>
                                 @foreach($maes as $mae)
@@ -209,7 +210,7 @@
                         <div class="col-12">
                             <h4>Histórico de Pesagens</h4>
                             <pre id="pesagemHistorico">
-                                
+
                             </pre>
                         </div>
                     </div>
@@ -227,7 +228,7 @@
         </div>
     </div>
 </div>
-</div>
+
 </body>
 <script>
     $('.modalBovinoShow').click(function(){
@@ -243,39 +244,40 @@
                 response = JSON.parse(response)
                 bovino = response['bovino']
                 pesagem = response['pesagens']
-                console.log(response);
-                
+
+                $('#idGado').val(bovino.id)
                 $('#name').val(bovino.name)
                 $('#born_date').val(bovino.born_date)
                 $('#IdBrinco').val(bovino.bovine_earring_id)
                 $('#idAssoc').val(bovino.association_id)
-                
+
                 $('#sexo option[value="'+ bovino.sex +'"]').prop('selected', true)
                 $('#idRaca option[value="'+ bovino.breed_id +'"]').prop('selected', true)
                 $('#idRebanho option[value="'+ bovino.flock_id +'"]').prop('selected', true)
                 $('#categoria option[value="'+ bovino.category + '"]').prop('selected', true)
                 $('#idPai option[value="'+ bovino.father_id + '"]').prop('selected', true)
                 $('#idMae option[value="'+ bovino.mother_id + '"]').prop('selected', true)
-
+                $('#idPai option[value="'+ bovino.id + '"]').addClass('d-none')
+                $('#idMae option[value="'+ bovino.id + '"]').addClass('d-none')
 
                 pesagem.forEach(element => {
                     $('#pesagemHistorico').append('\n Peso: ' + element.weight + "\n Cadastrado em : " + element.data + '<br>')
                 });
-                
-                
+
                 $('#modalBovino').modal('show')
             }
         })
-        
-        
+
+
     })
-    
+
     $('#btnFechar').click(function(){
         $('.form-control').val('')
         $('#pesagemHistorico').html('')
         $('#modalBovino').modal('hide')
+        $('.d-none').removeClass('d-none')
     })
-    
+
 </script>
 
 

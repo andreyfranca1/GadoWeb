@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cattle;
 use App\Models\Flock;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -9,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class RebanhosController extends Controller
@@ -36,5 +38,16 @@ class RebanhosController extends Controller
         }
 
         return back()->with('success', 'Rebanho cadastrado com sucesso');
+    }
+
+    public function excluirRebanhos($id)
+    {
+        try {
+            DB::table('flocks')->delete($id);
+        } catch (Throwable) {
+            return back()->withErrors(['Erro ao deletar rebanho. Vinculado a gados e/ou eventos!']);
+        }
+
+        return back()->with('success', 'Rebanho deletado com sucesso');
     }
 }

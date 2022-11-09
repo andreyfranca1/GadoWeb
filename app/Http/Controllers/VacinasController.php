@@ -6,8 +6,10 @@ use App\Models\Vaccine;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class VacinasController extends Controller
@@ -35,5 +37,16 @@ class VacinasController extends Controller
         }
 
         return back()->with('success', 'Vacina cadastrada com sucesso.');
+    }
+
+    public function excluirVacina($id): RedirectResponse
+    {
+        try {
+            DB::table('vaccines')->delete($id);
+        } catch (Throwable $t) {
+            return back()->withErrors(['Não permitido excluir vacinas já vinculadas a eventos.']);
+        }
+
+        return back()->with('success', 'Vacina deletada com sucesso!');
     }
 }
