@@ -5,7 +5,6 @@ use App\Models\Cattle;
 use App\Models\Flock;
 use Illuminate\Support\Facades\DB;
 use App\Models\Weighing;
-use Carbon\Carbon as CarbonCarbon;
 use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
