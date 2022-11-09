@@ -5,6 +5,7 @@ use App\Models\Cattle;
 use App\Models\Flock;
 use Illuminate\Support\Facades\DB;
 use App\Models\Weighing;
+use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
@@ -27,7 +28,37 @@ class HomeController extends Controller
 
     public function index(): Factory|View|Application
     {
-        return view('site.index', ['metrics' => $this->getMetrics()]);
+
+        
+
+        $nextEvents['alimentacoes'] = DB::table('food_events')->selectRaw('food_events.description as descricao, 
+        food_events.start_date as dataInicio, flocks.name as nomeRebanho')
+        ->join('flocks', 'food_events.flock_id', '=', 'flocks.id')
+        ->where('flocks.company_id', '=', Auth::user()->company_id)
+        ->whereBetween('food_events.start_date',[Carbon::now(), Carbon::now()->addDays(7)])
+        ->get()->toArray();
+        
+
+
+        $nextEvents['medicacoes'] = DB::table('medication_events')->selectRaw('medication_events.description as descricao, 
+        medication_events.start_date as dataInicio, flocks.name as nomeRebanho')
+        ->join('flocks', 'medication_events.flock_id', '=', 'flocks.id')
+        ->where('flocks.company_id', '=', Auth::user()->company_id)
+        ->whereBetween('medication_events.start_date',[Carbon::now(), Carbon::now()->addDays(7)])
+        ->get()->toArray();
+        
+
+        $nextEvents['vacinacoes'] = DB::table('vaccination_events')->selectRaw('vaccination_events.description as descricao, 
+        vaccination_events.date as dataInicio, flocks.name as nomeRebanho')
+        ->join('flocks', 'vaccination_events.flock_id', '=', 'flocks.id')
+        ->where('flocks.company_id', '=', Auth::user()->company_id)
+        ->whereBetween('vaccination_events.date',[Carbon::now(), Carbon::now()->addDays(7)])
+        ->get()->toArray();
+        
+
+        return view('site.index', [
+            'metrics' => $this->getMetrics(), 
+            'events' => $nextEvents]);
     }
 
     public function getMetrics(): array
@@ -48,10 +79,20 @@ class HomeController extends Controller
             ->count();
 
         $data['events'] = DB::table('flocks')
-            ->join('food_events', 'food_events.id', '=', 'flocks.id')
-            ->join('medication_events', 'medication_events.id', '=', 'flocks.id')
-            ->join('vaccination_events', 'vaccination_events.id', '=', 'flocks.id')
+            ->join('food_events', 'food_events.flock_id', '=', 'flocks.id')
+            ->whereBetween('food_events.created_at',[Carbon::now()->subDays(7),Carbon::now()])
             ->count();
+
+        $data['events'] += DB::table('flocks')
+            ->join('medication_events', 'medication_events.flock_id', '=', 'flocks.id')
+            ->whereBetween('medication_events.created_at',[Carbon::now()->subDays(7),Carbon::now()])
+            ->count();
+
+        $data['events'] += DB::table('flocks')
+            ->join('vaccination_events', 'vaccination_events.flock_id', '=', 'flocks.id')
+            ->whereBetween('vaccination_events.created_at',[Carbon::now()->subDays(7),Carbon::now()])
+            ->count();
+            
 
         return $data;
     }
