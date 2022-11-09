@@ -22,7 +22,6 @@
     @include('components.site.sidebar')
 
     @vite(['resources/js/dash.js'])
-
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row align-items-center">
@@ -86,7 +85,10 @@
                             <div class="avatar avatar-md mx-auto mb-3">
                                 <span class="avatar-initial rounded-circle bg-danger"><i class="bx bx-dock-top fs-3"></i></span>
                             </div>
-                            <span class="d-block mb-1 text-nowrap">Eventos de Saúde Nos Últimos 30 dias</span>
+                            <span class="d-block mb-1 text-nowrap">Eventos de Saúde
+                                <small>Últimos 30 dias</small>
+                            </span>
+                            
                             <h2 class="mb-0">{{$metrics['events']}}</h2>
                         </div>
                     </div>
@@ -96,27 +98,37 @@
                         <div id="chart"></div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
 
                 </div>
 
-                <div class="col-5">
+                <div class="col-6">
                     <div class="card p-5">
 
-                        <p>Proximos Eventos de Saúde</p>
+                        <p>Proximos Eventos de Saúde (7 dias)</p>
                         <div id="accordion">
                             <div class="card">
                                 <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                            Collapsible Group Item #1
+                                            Eventos de Alimentação
                                         </button>
                                     </h5>
                                 </div>
 
                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        @if (!empty($events['alimentacoes']))
+                                        @foreach ($events['alimentacoes'] as $alimentacao)
+                                        <div class="form-group">
+                                            <p>{{$alimentacao->nomeRebanho}} <br>
+                                            {{$alimentacao->descricao}} <br> {{date('d/m/Y',strtotime($alimentacao->dataInicio))}}</p>
+                                        </div>
+                                        <hr>
+                                         @endforeach
+                                        @else
+                                            <p>Nenhum Evento Cadastrado!</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -124,13 +136,23 @@
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Collapsible Group Item #2
+                                            Eventos de Medicação
                                         </button>
                                     </h5>
                                 </div>
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        @if (!empty($events['medicacoes']))
+                                        @foreach ($events['medicacoes'] as $medicacao)
+                                        <div class="form-group">
+                                            <p>{{$medicacao->nomeRebanho}} <br>
+                                            {{$medicacao->descricao}} <br> {{date('d/m/Y',strtotime($medicacao->dataInicio))}}</p>
+                                        </div>
+                                        <hr>
+                                         @endforeach
+                                        @else
+                                            <p>Nenhum Evento Cadastrado!</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -138,13 +160,23 @@
                                 <div class="card-header" id="headingThree">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Collapsible Group Item #3
+                                            Eventos de Vacinação
                                         </button>
                                     </h5>
                                 </div>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        @if (!empty($events['vacinacoes']))
+                                        @foreach ($events['vacinacoes'] as $vacinacao)
+                                        <div class="form-group">
+                                            <p>{{$vacinacao->nomeRebanho}} <br>
+                                            {{$vacinacao->descricao}} <br> {{date('d/m/Y',strtotime($vacinacao->dataInicio))}}</p>
+                                        </div>
+                                        <hr>
+                                        @endforeach
+                                        @else
+                                            <p>Nenhum Evento Cadastrado!</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
