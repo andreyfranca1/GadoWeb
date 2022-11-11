@@ -74,7 +74,7 @@
                                         <td>{{date('d/m/Y h:i',strtotime($user['created_at']))}}</td>
                                         <td>
                                             <div class="text-right">
-                                                <button type="button" class="modalBovinoShow btn btn-primary" data-bovino="{{$user['id']}}">Visualizar/Editar</button>
+{{--                                                <button type="button" class="modalBovinoShow btn btn-primary" data-bovino="{{$user['id']}}">Visualizar/Editar</button>--}}
                                                 <a href="{{route('site.usuario.excluir', ['id' => $user['id']])}}" class="btn btn-confirm-exclusao btn-danger">Excluir</a>
                                             </div>
                                         </td>
