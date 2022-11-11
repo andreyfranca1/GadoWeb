@@ -61,7 +61,8 @@
                                     <th>#</th>
                                     <th>Nome</th>
                                     <th>E-mail</th>
-                                    <th>Data de Criação</th>
+                                    <th>Data de Criação/Nascimento</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -71,6 +72,12 @@
                                         <td>{{$user['name']}}</td>
                                         <td>{{$user['email']}}</td>
                                         <td>{{date('d/m/Y h:i',strtotime($user['created_at']))}}</td>
+                                        <td>
+                                            <div class="text-right">
+{{--                                                <button type="button" class="modalBovinoShow btn btn-primary" data-bovino="{{$user['id']}}">Visualizar/Editar</button>--}}
+                                                <a href="{{route('backoffice.user.delete', ['id' => $user['id']])}}" class="btn btn-confirm-exclusao btn-danger">Excluir</a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -91,5 +98,4 @@
     </div>
 
 </body>
-    @include('components.footer')
-</html>
+@include('components.footer')

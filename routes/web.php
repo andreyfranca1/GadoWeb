@@ -42,6 +42,7 @@ Route::group(['prefix' => 'backoffice'], function(){
         Route::get('', [UserAdminController::class, 'index'])->name('backoffice.user.index');
         Route::post('/new', [UserAdminController::class, 'newUser'])->name('backoffice.user.new');
         Route::view('/new', 'backoffice.users.new')->name('backoffice.user.new');
+        Route::get('excluir/{id}', [UserAdminController::class, 'deleteUser'])->name('backoffice.user.delete');
     });
 
     Route::get('/logout', [LoginController::class, 'logoutBackOffice'])->name('backoffice.logout');
