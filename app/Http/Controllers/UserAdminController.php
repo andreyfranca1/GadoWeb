@@ -6,7 +6,9 @@ use App\Models\UserAdmin;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
 
@@ -31,7 +33,7 @@ class UserAdminController extends Controller
             'number' => ['required'],
             'district' => ['required'],
             'city' => ['required'],
-            // 'state' => ['required'],
+            'state' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required'],
             'passwordConfirm' => ['required']
@@ -46,7 +48,7 @@ class UserAdminController extends Controller
             'number.required' => 'Informe o número do endereço do usuário.',
             'district.required' => 'Informe o bairro do endereço do usuário.',
             'city.required' => 'Informe a cidade do usuário.',
-            // 'state.required' => 'Informe o estado do usuário.',
+            'state.required' => 'Informe o estado do usuário.',
             'email.required' => 'Informe o email do usuário.',
             'email.email' => 'Informe um email válido para usuário.',
             'password.required' => 'O campo senha é obrigatório',
@@ -78,7 +80,7 @@ class UserAdminController extends Controller
             $userAdmin->number = $request['number'];
             $userAdmin->district = $request['district'];
             $userAdmin->city = $request['city'];
-            $userAdmin->state = "RS";
+            $userAdmin->state = $request['state'];
 
             $userAdmin->save();
         } catch (Throwable $t) {
@@ -86,5 +88,16 @@ class UserAdminController extends Controller
         }
 
         return back()->with('success', 'Usuário administrador cadastrado com sucesso');
+    }
+
+    public function deleteUser($id): RedirectResponse
+    {
+        try {
+            DB::table('user_admins')->delete($id);
+        } catch (Throwable $t) {
+            return back()->withErrors(['Erro ao excluir usuário.']);
+        }
+
+        return back()->with('success', 'Usuário deletado com sucesso!');
     }
 }

@@ -42,6 +42,7 @@ Route::group(['prefix' => 'backoffice'], function(){
         Route::get('', [UserAdminController::class, 'index'])->name('backoffice.user.index');
         Route::post('/new', [UserAdminController::class, 'newUser'])->name('backoffice.user.new');
         Route::view('/new', 'backoffice.users.new')->name('backoffice.user.new');
+        Route::get('excluir/{id}', [UserAdminController::class, 'deleteUser'])->name('backoffice.user.delete');
     });
 
     Route::get('/logout', [LoginController::class, 'logoutBackOffice'])->name('backoffice.logout');
@@ -55,6 +56,7 @@ Route::get('/logout', [LoginController::class, 'logoutSite'])->name('site.logout
 Route::group(['prefix' => 'ajax'], function(){
      Route::get('/getBovinosByGender', [BovinosController::class, 'getBovinosByGender'])->name('site.ajaxMetrics');
      Route::post('/getBovinoById', [BovinosController::class, 'getBovinoById'])->name('site.bovinos.id');
+     Route::post('/getBovinosByFlock', [BovinosController::class, 'getBovinosByFlock'])->name('site.bovinos.rebanho');
 });
 
 
