@@ -46,3 +46,18 @@
         </div>
     </div>
 @endif
+
+@if (session('success'))
+    <div class="position-fixed top-0 end-0 p-3 mt-5" style="z-index: 11">
+        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fas fa-check mr-1" style="color: green"></i>
+                <strong class="me-auto"> Gado Manager</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div>
+@endif

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('doc_number', 20);
             $table->string('doc_number2', 20);
             $table->string('email', 100)->nullable();
-            $table->string('phone', 10)->nullable();
-            $table->string('cellphone', 10);
-            $table->string('cep', 10);
+            $table->string('phone', 20)->nullable();
+            $table->string('cellphone', 20);
+            $table->string('cep', 20);
             $table->string('address', 80);
             $table->string('number', 10);
             $table->string('district', 80);

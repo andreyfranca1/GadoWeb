@@ -35,7 +35,7 @@ class CompanyController extends Controller
             'number' => ['required'],
             'district' => ['required'],
             'city' => ['required'],
-            // 'state' => ['required'],
+            'state' => ['required'],
             'born_date' => ['required'],
             'nameUser' => ['required'],
             'emailUser' => ['required', 'email'],
@@ -55,7 +55,7 @@ class CompanyController extends Controller
             'number.required' => 'Informe o número do endereço da empresa.',
             'district.required' => 'Informe o bairro do endereço da empresa.',
             'city.required' => 'Informe a cidade da empresa.',
-            // 'state.required' => 'Informe o estado da empresa.',
+            'state.required' => 'Informe o estado da empresa.',
             'born_date.required' => 'Informe a data de abertura da empresa.',
             'nameUser.required' => 'Informe o nome do usuário.',
             'emailUser.required' => 'Informe o email do usuário.',
@@ -82,6 +82,7 @@ class CompanyController extends Controller
         }
 
         if (!validaCPF($request['cpfUser'])) {
+            dd($request['cpfUser']);
             return back()->withErrors(['CPF Inválido para o cadastro do usuário.']);
         }
 
@@ -104,7 +105,7 @@ class CompanyController extends Controller
             $company->number =  $request['number'];
             $company->district =  $request['district'];
             $company->city =  $request['city'];
-            $company->state =  "RS";
+            $company->state =  $request['state'];
             $company->born_date = $request['born_date'];
             $company->status = 1;
 

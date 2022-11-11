@@ -125,13 +125,13 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="phone">Telefone</label>
-                                                <input id="phone" name="phone" type="text" class="form-control">
+                                                <input id="phone" name="phone" type="text" class="form-control tel">
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="cellphone">Celular</label>
-                                                <input id="cellphone" name="cellphone" type="text" class="form-control">
+                                                <input id="cellphone" name="cellphone" type="text" class="form-control cel">
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +172,34 @@
                                             <div class="form-group">
                                                 <label for="state">Estado</label>
                                                 <select id="state" name="state" class="form-control">
-                                                    <option value=""></option>
+                                                    <option value="" selected disabled>SELECIONE</option>
+                                                    <option value="AC">Acre</option>
+                                                    <option value="AL">Alagoas</option>
+                                                    <option value="AP">Amapá</option>
+                                                    <option value="AM">Amazonas</option>
+                                                    <option value="BA">Bahia</option>
+                                                    <option value="CE">Ceará</option>
+                                                    <option value="DF">Distrito Federal</option>
+                                                    <option value="ES">Espírito Santo</option>
+                                                    <option value="GO">Goiás</option>
+                                                    <option value="MA">Maranhão</option>
+                                                    <option value="MT">Mato Grosso</option>
+                                                    <option value="MS">Mato Grosso do Sul</option>
+                                                    <option value="MG">Minas Gerais</option>
+                                                    <option value="PA">Pará</option>
+                                                    <option value="PB">Paraíba</option>
+                                                    <option value="PR">Paraná</option>
+                                                    <option value="PE">Pernambuco</option>
+                                                    <option value="PI">Piauí</option>
+                                                    <option value="RJ">Rio de Janeiro</option>
+                                                    <option value="RN">Rio Grande do Norte</option>
+                                                    <option value="RS">Rio Grande do Sul</option>
+                                                    <option value="RO">Rondônia</option>
+                                                    <option value="RR">Roraima</option>
+                                                    <option value="SC">Santa Catarina</option>
+                                                    <option value="SP">São Paulo</option>
+                                                    <option value="SE">Sergipe</option>
+                                                    <option value="TO">Tocantins</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -214,8 +241,8 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label for="userPhone">Telefone</label>
-                                                <input id="userPhone" name="userPhone" type="text" class="form-control">
+                                                <label for="userPhone">Celular</label>
+                                                <input id="userPhone" name="userPhone" type="text" class="form-control cel">
                                             </div>
                                         </div>
                                     </div>
@@ -322,6 +349,10 @@
                     $('#doc_number2Label').text('IE')
                     $('#born_dateLabel').text('Data de Abertura')
                 })
+
+
+                $('.tel').mask('(99)9999-9999')
+                $('.cel').mask('(99)99999-9999')
 
             </script>
         </div>
