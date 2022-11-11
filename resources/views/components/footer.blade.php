@@ -17,6 +17,10 @@
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 <script>
+    $('.tel').mask('(99)9999-9999')
+    $('.cel').mask('(99)99999-9999')
+    $('.cpf').mask('999.999.999-99')
+
     $(document).ready(function(){
         setTimeout(() => {
             $('#liveToast').fadeOut()

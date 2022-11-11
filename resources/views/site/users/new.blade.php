@@ -62,7 +62,7 @@
                                             <div class="form-group">
                                                 <label for="cpf" id="cpfLabel">CPF</label>
                                                 <div class="input-group">
-                                                    <input id="cpf" name="cpf" type="text" required="required" class="form-control">
+                                                    <input id="cpf" name="cpf" type="text" required="required" class="form-control cpf">
                                                 </div>
                                             </div>
                                         </div>
@@ -70,7 +70,7 @@
                                             <div class="form-group">
                                                 <label for="cellphone" id="cellphoneLabel">Celular</label>
                                                 <div class="input-group">
-                                                    <input id="cellphone" name="cellphone" type="text" required="required" class="form-control">
+                                                    <input id="cellphone" name="cellphone" type="text" required="required" class="form-control cel">
                                                 </div>
                                             </div>
                                         </div>
