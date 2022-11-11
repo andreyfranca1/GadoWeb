@@ -58,7 +58,6 @@
                             <table class="table table-striped" id="dataTable">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Nome</th>
                                     <th>E-mail</th>
                                     <th>Data de Criação</th>
@@ -68,7 +67,6 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                        <td>{{$user['id']}}</td>
                                         <td>{{$user['name']}}</td>
                                         <td>{{$user['email']}}</td>
                                         <td>{{date('d/m/Y h:i',strtotime($user['created_at']))}}</td>
