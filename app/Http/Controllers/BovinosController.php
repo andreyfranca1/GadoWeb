@@ -142,6 +142,17 @@ class BovinosController extends Controller
         echo json_encode($data);
     }
 
+    public function getBovinosByFlock(Request $request){
+
+        $request = $request->toArray();
+
+        $bovino = Cattle::query()->select('bovine_earring_id','association_id', 'name')
+        ->where('flock_id', '=', $request['id'])
+        ->orderBy('name')->get()->toArray();
+
+        echo json_encode($bovino);
+    }
+
     public function excluirBovino($id): RedirectResponse
     {
         try {
