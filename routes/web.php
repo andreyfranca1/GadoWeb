@@ -56,6 +56,7 @@ Route::get('/logout', [LoginController::class, 'logoutSite'])->name('site.logout
 Route::group(['prefix' => 'ajax'], function(){
      Route::get('/getBovinosByGender', [BovinosController::class, 'getBovinosByGender'])->name('site.ajaxMetrics');
      Route::post('/getBovinoById', [BovinosController::class, 'getBovinoById'])->name('site.bovinos.id');
+     Route::post('/getBovinosByFlock', [BovinosController::class, 'getBovinosByFlock'])->name('site.bovinos.rebanho');
 });
 
 
